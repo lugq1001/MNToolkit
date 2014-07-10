@@ -10,7 +10,8 @@
 #import <CommonCrypto/CommonCryptor.h>
 #import <CommonCrypto/CommonKeyDerivation.h>
 
-static const NSUInteger kMaxReadSize = 409600;
+static const NSUInteger kAesOutputUnit = 16;
+static const NSUInteger kMaxReadSize = 8196;
 const CCAlgorithm kAlgorithm = kCCAlgorithmAES128;
 const NSUInteger kAlgorithmKeySize = kCCKeySizeAES256;
 const NSUInteger kAlgorithmBlockSize = kCCBlockSizeAES128;
@@ -84,18 +85,32 @@ static Byte iv[]   = {5,2,1,1,9,9,4,4};
     
     NSUInteger offset = 0;
     NSData *readData;
-    while ((offset += kMaxReadSize) < fileSize) {
+    
+    /**
+     *  @note
+     *  输入是16*n字节，没有填充的情况下，输出和输入相同；
+     *  有填充的情况下，输出是16*（n+1）。
+     *  如果输入不是16字节整数倍，而是大于16*n小于16*（n+1),没有填充的情况下(CFB、OFB),输出和输入长度相同;有填充情况下,输出长度是16+1）
+     */
+    NSUInteger readLen = operation == kCCEncrypt ?
+                        kMaxReadSize : kMaxReadSize - kMaxReadSize % kAesOutputUnit + kAesOutputUnit;
+    while ((offset += readLen) < fileSize) {
+        readData = [readHandle readDataOfLength:readLen];
+        //NSLog(@"readData length:%lu",(unsigned long)[readData length]);
         readData = [self aes256cryptor:operation
-                                  data:[readHandle readDataOfLength:kMaxReadSize]
+                                  data:readData
                                    key:password];
+        //NSLog(@"encryptData length:%lu",(unsigned long)[readData length]);
         [writehHandler writeData:readData];
         [readHandle seekToFileOffset:offset];
     }
+    readData = [readHandle readDataToEndOfFile];
+    //NSLog(@"readData length:%lu",(unsigned long)[readData length]);
     readData = [self aes256cryptor:operation
-                              data:[readHandle readDataToEndOfFile]
+                              data:readData
                                key:password];
+    //NSLog(@"encryptData length:%lu",(unsigned long)[readData length]);
     [writehHandler writeData:readData];
-    NSLog(@"%lld",[readHandle offsetInFile]);
     [readHandle closeFile];
     [writehHandler closeFile];
     return YES;

@@ -176,8 +176,8 @@
         NSLog(@"----------------------MNCommonCryptor(aes256Encrypt)----------------------");
         NSLog(@"clear text:%@",self.clearText);
         NSLog(@"clear data:%s",[[data description] UTF8String]);
-        NSLog(@"clear data base64:%@",dataB64);
-        NSLog(@"cipher text base64:%@",encryptB64);
+        NSLog(@"clear data base64-md5:%@",[MNCryptor md5:dataB64]);
+        NSLog(@"cipher text base64-md5:%@",[MNCryptor md5:encryptB64]);
         NSLog(@"cipher data:%s",[[aes256encrypt description] UTF8String]);
         
         NSData *cipherData = [MNCryptor base64DecodeForData:encryptB64];
@@ -186,9 +186,9 @@
         NSLog(@"----------------------MNCommonCryptor(aes256Decrypt)----------------------");
         NSLog(@"cipher data:%s",[[cipherData description] UTF8String]);
         NSLog(@"clear text:%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-        NSLog(@"clear data base64:%@",decryptB64);
+        NSLog(@"clear data base64-md5:%@",[MNCryptor md5:decryptB64]);
         
-        XCTAssertEqualObjects(dataB64, decryptB64, @"Test aes failed");
+        XCTAssertEqualObjects([MNCryptor md5:dataB64], [MNCryptor md5:decryptB64], @"Test aes failed");
     }
     
     {
@@ -204,14 +204,19 @@
         NSString *targetB64 = [MNCryptor base64EncodeWithData:encryptData];
         NSLog(@"----------------------MNCommonCryptor(aes256EncryptFromFile)----------------------");
         NSLog(@"file path:%@",self.filePath);
-        NSLog(@"file encrypt b64:%@",encryptB64);
-        NSLog(@"==================================================================================================");
-        NSLog(@"target b64:%@",targetB64);
-        XCTAssertEqualObjects(encryptB64, targetB64, @"Test aes file failed");
+        NSLog(@"file encrypt b64-md5:%@",[MNCryptor md5:encryptB64]);
+        NSLog(@"target b64-md5:%@",[MNCryptor md5:targetB64]);
+        //XCTAssertEqualObjects([MNCryptor md5:encryptB64], [MNCryptor md5:targetB64], @"Test aes file failed");
         
         NSString *file = [NSTemporaryDirectory() stringByAppendingPathComponent:@"dog.png"];
         [MNCryptor aes256DecryptFromFile:target to:file key:self.key];
-        
+        NSData *decryptData = [NSData dataWithContentsOfFile:file];
+        NSString *decryptB64 = [MNCryptor base64EncodeWithData:decryptData];
+        NSLog(@"----------------------MNCommonCryptor(aes256DecryptFromFile)----------------------");
+        NSLog(@"file path:%@",file);
+        NSLog(@"file encrypt b64-md5:%@",[MNCryptor md5:decryptB64]);
+        NSLog(@"original data b64-md5:%@",[MNCryptor md5:[MNCryptor base64EncodeWithData:fileData]]);
+        XCTAssertEqualObjects([MNCryptor md5:decryptB64], [MNCryptor md5:[MNCryptor base64EncodeWithData:fileData]], @"Test aes file failed");
     }
 }
 
