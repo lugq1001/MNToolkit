@@ -1,5 +1,5 @@
 //
-//  MNCommonCryptor.h
+//  MNCryptor.h
 //  MNToolkit
 //
 //  Created by 陆广庆 on 14/7/9.
@@ -9,23 +9,25 @@
 @import Foundation;
 
 /**
- *  @class MNCommonCryptor
+ *  @class MNCryptor
  *  @brief 加密工具类
  */
-@interface MNCommonCryptor : NSObject
+@interface MNCryptor : NSObject
 
 #pragma mark -Base64编码
-+ (NSString *)base64Encode:(NSString *)clearText;
-+ (NSString *)base64Decode:(NSString *)b64String;
++ (NSString *) base64Encode:(NSString *)clearText;
++ (NSString *) base64EncodeWithData:(NSData *)data;
++ (NSString *) base64Decode:(NSString *)b64String;
++ (NSData *)   base64DecodeForData:(NSString *)b64String;
 
 #pragma mark -URL编码
-+ (NSString *)urlEncode:(NSString *)clearText;
-+ (NSString *)urlDecode:(NSString *)urlString;
++ (NSString *) urlEncode:(NSString *)clearText;
++ (NSString *) urlDecode:(NSString *)urlString;
 
 @end
 
 #pragma mark -MD5 HASH
-@interface MNCommonCryptor(md5Hash)
+@interface MNCryptor(md5Hash)
 
 + (NSString *) md5:(NSString *)clearText;
 + (NSString *) md5WithData:(NSData *)data;
@@ -35,7 +37,7 @@
 @end
 
 #pragma mark -SHA HASH
-@interface MNCommonCryptor(shaHash)
+@interface MNCryptor(shaHash)
 
 + (NSString *) sha1:(NSString *)clearText;
 + (NSString *) sha224:(NSString *)clearText;
@@ -56,3 +58,55 @@
 + (NSString *) sha512WithFile:(NSString *)filePath;
 
 @end
+
+#pragma mark -AES
+@interface MNCryptor(AES)
+
++ (NSData *) aes256Encrypt:(NSString *)clearText key:(id)key;
++ (NSData *) aes256Decrypt:(NSString *)ciperText key:(id)key;
++ (NSData *) aes256EncryptWithData:(NSData *)data key:(id)key;
++ (NSData *) aes256DecryptWithData:(NSData *)data key:(id)key;
+
++ (BOOL)     aes256EncryptFromFile:(NSString *)filePath
+                                to:(NSString *)targetPath
+                               key:(id)key;
++ (BOOL)     aes256DecryptFromFile:(NSString *)filePath
+                                to:(NSString *)targetPath
+                               key:(id)key;
+@end
+
+#pragma mark -RSA
+@interface MNCryptor(RSA)
+
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

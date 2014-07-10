@@ -1,12 +1,12 @@
 //
-//  MNCommonCryptor+SHA.m
+//  MNCryptor+SHA.m
 //  MNToolkit
 //
 //  Created by 陆广庆 on 14/7/9.
 //  Copyright (c) 2014年 陆广庆. All rights reserved.
 //
 
-#import "MNCommonCryptor.h"
+#import "MNCryptor.h"
 #import <CommonCrypto/CommonDigest.h>
 
 #define FileHashDefaultChunkSizeForReadingData 4096
@@ -20,7 +20,7 @@ typedef NS_ENUM(NSInteger, MNSHAType)
     MNSHAType512
 };
 
-@implementation MNCommonCryptor (shaHash)
+@implementation MNCryptor (shaHash)
 
 + (NSString *) sha1:(NSString *)string
 {
@@ -100,6 +100,7 @@ typedef NS_ENUM(NSInteger, MNSHAType)
 
 + (NSString *)sha:(id)class type:(MNSHAType)type
 {
+    NSParameterAssert([class isKindOfClass: [NSData class]] || [class isKindOfClass: [NSString class]]);
     NSData *data;
     if ([class isKindOfClass:[NSString class]]) {
         NSString *string = (NSString *)class;
@@ -107,8 +108,6 @@ typedef NS_ENUM(NSInteger, MNSHAType)
         data = [NSData dataWithBytes:cstr length:string.length];
     } else if ([class isKindOfClass:[NSData class]]) {
         data = (NSData *)class;
-    } else {
-        return nil;
     }
     
     NSUInteger len;

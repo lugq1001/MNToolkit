@@ -1,17 +1,17 @@
 //
-//  MNCommonCryptor+MD5.m
+//  MNCryptor+MD5.m
 //  MNToolkit
 //
 //  Created by 陆广庆 on 14/7/9.
 //  Copyright (c) 2014年 陆广庆. All rights reserved.
 //
 
-#import "MNCommonCryptor.h"
+#import "MNCryptor.h"
 #import <CommonCrypto/CommonDigest.h>
 
 #define FileHashDefaultChunkSizeForReadingData 4096
 
-@implementation MNCommonCryptor (md5Hash)
+@implementation MNCryptor (md5Hash)
 
 + (NSString *) md5:(NSString *)clearText
 {

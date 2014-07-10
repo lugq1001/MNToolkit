@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3142682A196D034D00973BC4 /* MNCommonCryptor+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 31426828196D034D00973BC4 /* MNCommonCryptor+MD5.m */; };
-		3142682C196D03D300973BC4 /* MNCommonCryptorTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3142682B196D03D300973BC4 /* MNCommonCryptorTestCase.m */; };
+		3142682A196D034D00973BC4 /* MNCryptor+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 31426828196D034D00973BC4 /* MNCryptor+MD5.m */; };
+		3142682C196D03D300973BC4 /* MNCryptorTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3142682B196D03D300973BC4 /* MNCryptorTestCase.m */; };
 		31426830196D087B00973BC4 /* dog.png in Resources */ = {isa = PBXBuildFile; fileRef = 3142682F196D087B00973BC4 /* dog.png */; };
-		31426836196D1E9500973BC4 /* MNCommonCryptor+SHA.m in Sources */ = {isa = PBXBuildFile; fileRef = 31426835196D1E9500973BC4 /* MNCommonCryptor+SHA.m */; };
-		31426838196D2D9500973BC4 /* MNCommonCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 31426837196D2D9500973BC4 /* MNCommonCryptor.m */; };
+		31426836196D1E9500973BC4 /* MNCryptor+SHA.m in Sources */ = {isa = PBXBuildFile; fileRef = 31426835196D1E9500973BC4 /* MNCryptor+SHA.m */; };
+		31426838196D2D9500973BC4 /* MNCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 31426837196D2D9500973BC4 /* MNCryptor.m */; };
+		3142683B196D391800973BC4 /* MNCryptor+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 3142683A196D391800973BC4 /* MNCryptor+AES.m */; };
 		31781712196CFADB001D3F4E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 31781711196CFADB001D3F4E /* main.m */; };
 		31781715196CFADB001D3F4E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 31781714196CFADB001D3F4E /* AppDelegate.m */; };
 		31781718196CFADB001D3F4E /* MNToolkit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31781716196CFADB001D3F4E /* MNToolkit.xcdatamodeld */; };
@@ -29,12 +30,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		31426828196D034D00973BC4 /* MNCommonCryptor+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MNCommonCryptor+MD5.m"; path = "Modules/Security/MNCommonCryptor+MD5.m"; sourceTree = "<group>"; };
-		31426829196D034D00973BC4 /* MNCommonCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MNCommonCryptor.h; path = Modules/Security/MNCommonCryptor.h; sourceTree = "<group>"; };
-		3142682B196D03D300973BC4 /* MNCommonCryptorTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCommonCryptorTestCase.m; sourceTree = "<group>"; };
+		31426828196D034D00973BC4 /* MNCryptor+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MNCryptor+MD5.m"; path = "Modules/Security/MNCryptor+MD5.m"; sourceTree = "<group>"; };
+		31426829196D034D00973BC4 /* MNCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MNCryptor.h; path = Modules/Security/MNCryptor.h; sourceTree = "<group>"; };
+		3142682B196D03D300973BC4 /* MNCryptorTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCryptorTestCase.m; sourceTree = "<group>"; };
 		3142682F196D087B00973BC4 /* dog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dog.png; path = Resources/Images/dog.png; sourceTree = "<group>"; };
-		31426835196D1E9500973BC4 /* MNCommonCryptor+SHA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MNCommonCryptor+SHA.m"; path = "Modules/Security/MNCommonCryptor+SHA.m"; sourceTree = "<group>"; };
-		31426837196D2D9500973BC4 /* MNCommonCryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MNCommonCryptor.m; path = Modules/Security/MNCommonCryptor.m; sourceTree = "<group>"; };
+		31426835196D1E9500973BC4 /* MNCryptor+SHA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MNCryptor+SHA.m"; path = "Modules/Security/MNCryptor+SHA.m"; sourceTree = "<group>"; };
+		31426837196D2D9500973BC4 /* MNCryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MNCryptor.m; path = Modules/Security/MNCryptor.m; sourceTree = "<group>"; };
+		3142683A196D391800973BC4 /* MNCryptor+AES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MNCryptor+AES.m"; path = "Modules/Security/MNCryptor+AES.m"; sourceTree = "<group>"; };
 		3178170C196CFADB001D3F4E /* MNToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31781710196CFADB001D3F4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31781711196CFADB001D3F4E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -132,7 +134,7 @@
 		31781722196CFADC001D3F4E /* MNToolkitTests */ = {
 			isa = PBXGroup;
 			children = (
-				3142682B196D03D300973BC4 /* MNCommonCryptorTestCase.m */,
+				3142682B196D03D300973BC4 /* MNCryptorTestCase.m */,
 				31781723196CFADC001D3F4E /* Supporting Files */,
 			);
 			path = MNToolkitTests;
@@ -149,10 +151,11 @@
 		3178172F196CFB09001D3F4E /* Security */ = {
 			isa = PBXGroup;
 			children = (
-				31426829196D034D00973BC4 /* MNCommonCryptor.h */,
-				31426837196D2D9500973BC4 /* MNCommonCryptor.m */,
-				31426828196D034D00973BC4 /* MNCommonCryptor+MD5.m */,
-				31426835196D1E9500973BC4 /* MNCommonCryptor+SHA.m */,
+				31426829196D034D00973BC4 /* MNCryptor.h */,
+				31426837196D2D9500973BC4 /* MNCryptor.m */,
+				31426828196D034D00973BC4 /* MNCryptor+MD5.m */,
+				31426835196D1E9500973BC4 /* MNCryptor+SHA.m */,
+				3142683A196D391800973BC4 /* MNCryptor+AES.m */,
 			);
 			name = Security;
 			sourceTree = "<group>";
@@ -257,10 +260,11 @@
 			files = (
 				31781715196CFADB001D3F4E /* AppDelegate.m in Sources */,
 				31781712196CFADB001D3F4E /* main.m in Sources */,
-				31426836196D1E9500973BC4 /* MNCommonCryptor+SHA.m in Sources */,
-				31426838196D2D9500973BC4 /* MNCommonCryptor.m in Sources */,
+				31426836196D1E9500973BC4 /* MNCryptor+SHA.m in Sources */,
+				31426838196D2D9500973BC4 /* MNCryptor.m in Sources */,
+				3142683B196D391800973BC4 /* MNCryptor+AES.m in Sources */,
 				31781718196CFADB001D3F4E /* MNToolkit.xcdatamodeld in Sources */,
-				3142682A196D034D00973BC4 /* MNCommonCryptor+MD5.m in Sources */,
+				3142682A196D034D00973BC4 /* MNCryptor+MD5.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3142682C196D03D300973BC4 /* MNCommonCryptorTestCase.m in Sources */,
+				3142682C196D03D300973BC4 /* MNCryptorTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
