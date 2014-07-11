@@ -26,6 +26,13 @@
 
 @end
 
+#pragma mark -OTP
+@interface MNCryptor(OTP)
+
++ (NSString *) otpPassword:(NSString *)seed serverTime:(unsigned long long)serverTimeSecond;
+
+@end
+
 #pragma mark -MD5 HASH
 @interface MNCryptor(md5Hash)
 

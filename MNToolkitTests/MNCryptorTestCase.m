@@ -46,6 +46,16 @@
     }];
 }
 
+- (void) testOTP
+{
+    NSTimeInterval millis = [[NSDate date] timeIntervalSince1970];
+    unsigned long long now = [[NSNumber numberWithDouble:millis] unsignedLongLongValue];
+    NSString *otp = [MNCryptor otpPassword:self.key serverTime:now];
+    NSLog(@"----------------------MNCommonCryptor(otpPassword)----------------------");
+    NSLog(@"time:%llu",now);
+    NSLog(@"otp:%@",otp);
+}
+
 - (void) testMD5
 {
     NSString *md5 = [MNCryptor md5:self.clearText];
