@@ -21,51 +21,57 @@ static Byte iv[]   = {5,2,1,1,9,9,4,4};
 
 @implementation MNCryptor (AES)
 
-+ (NSData *) aes256Encrypt:(NSString *)clearText key:(id)key
++ (NSData *) aes256Encrypt:(id)stringOrData key:(id)key
 {
-    return [self aes256EncryptData:[clearText dataUsingEncoding:NSUTF8StringEncoding] key:key];
-}
-
-+ (NSData *) aes256Decrypt:(NSString *)ciperText key:(id)key
-{
-    return [self aes256DecryptData:[ciperText dataUsingEncoding:NSUTF8StringEncoding] key:key];
-}
-
-+ (NSData *) aes256EncryptData:(NSData *)data key:(id)key
-{
+    NSParameterAssert([stringOrData isKindOfClass: [NSData class]] || [stringOrData isKindOfClass: [NSString class]]);
+    NSData *data;
+    if ([stringOrData isKindOfClass:[NSString class]]) {
+        NSString *string = (NSString *)stringOrData;
+        data = [string dataUsingEncoding:NSUTF8StringEncoding];
+    } else {
+        data = (NSData *)stringOrData;
+    }
     NSData *password = [self generatePasswordWithKey:key];
     return [self aes256cryptor:kCCEncrypt data:data key:password];
 }
 
-+ (NSData *) aes256DecryptData:(NSData *)data key:(id)key
++ (NSData *) aes256Decrypt:(id)stringOrData key:(id)key
 {
+    NSParameterAssert([stringOrData isKindOfClass: [NSData class]] || [stringOrData isKindOfClass: [NSString class]]);
+    NSData *data;
+    if ([stringOrData isKindOfClass:[NSString class]]) {
+        NSString *string = (NSString *)stringOrData;
+        data = [string dataUsingEncoding:NSUTF8StringEncoding];
+    } else {
+        data = (NSData *)stringOrData;
+    }
     NSData *password = [self generatePasswordWithKey:key];
     return [self aes256cryptor:kCCDecrypt data:data key:password];
 }
 
-+ (BOOL) aes256EncryptFromFile:(NSString *)filePath
-                            to:(NSString *)targetPath
-                           key:(id)key
++ (BOOL) aes256EncryptFile:(NSString *)filePath
+                        to:(NSString *)targetFilePath
+                        key:(id)key
 {
     return [self aes256cryptorForFile:kCCEncrypt
                                  from:filePath
-                                   to:targetPath
+                                   to:targetFilePath
                                   key:key];
 }
 
-+ (BOOL) aes256DecryptFromFile:(NSString *)filePath
-                            to:(NSString *)targetPath
-                           key:(id)key
++ (BOOL) aes256DecryptFile:(NSString *)filePath
+                        to:(NSString *)targetFilePath
+                        key:(id)key
 {
     return [self aes256cryptorForFile:kCCDecrypt
                                  from:filePath
-                                   to:targetPath
+                                   to:targetFilePath
                                   key:key];
 }
 
 + (BOOL) aes256cryptorForFile:(CCOperation)operation
                          from:(NSString *)filePath
-                           to:(NSString *)targetPath
+                           to:(NSString *)targetFilePath
                           key:(id)key
 {
     NSData *password = [self generatePasswordWithKey:key];
@@ -73,13 +79,13 @@ static Byte iv[]   = {5,2,1,1,9,9,4,4};
     if (![manager fileExistsAtPath:filePath]) {
         return NO;
     }
-    if ([manager fileExistsAtPath:targetPath]) {
-        [manager removeItemAtPath:targetPath error:nil];
+    if ([manager fileExistsAtPath:targetFilePath]) {
+        [manager removeItemAtPath:targetFilePath error:nil];
     }
-    [manager createFileAtPath:targetPath contents:nil attributes:nil];
+    [manager createFileAtPath:targetFilePath contents:nil attributes:nil];
     
     NSFileHandle *readHandle = [NSFileHandle fileHandleForReadingAtPath:filePath];
-    NSFileHandle *writehHandler = [NSFileHandle fileHandleForWritingAtPath:targetPath];
+    NSFileHandle *writehHandler = [NSFileHandle fileHandleForWritingAtPath:targetFilePath];
     [writehHandler seekToFileOffset:0];
     unsigned long long fileSize = [[manager attributesOfItemAtPath:filePath error:nil] fileSize];
     
@@ -96,20 +102,16 @@ static Byte iv[]   = {5,2,1,1,9,9,4,4};
                         kMaxReadSize : kMaxReadSize - kMaxReadSize % kAesOutputUnit + kAesOutputUnit;
     while ((offset += readLen) < fileSize) {
         readData = [readHandle readDataOfLength:readLen];
-        //NSLog(@"readData length:%lu",(unsigned long)[readData length]);
         readData = [self aes256cryptor:operation
                                   data:readData
                                    key:password];
-        //NSLog(@"encryptData length:%lu",(unsigned long)[readData length]);
         [writehHandler writeData:readData];
         [readHandle seekToFileOffset:offset];
     }
     readData = [readHandle readDataToEndOfFile];
-    //NSLog(@"readData length:%lu",(unsigned long)[readData length]);
     readData = [self aes256cryptor:operation
                               data:readData
                                key:password];
-    //NSLog(@"encryptData length:%lu",(unsigned long)[readData length]);
     [writehHandler writeData:readData];
     [readHandle closeFile];
     [writehHandler closeFile];

@@ -19,6 +19,10 @@
 		31781715196CFADB001D3F4E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 31781714196CFADB001D3F4E /* AppDelegate.m */; };
 		31781718196CFADB001D3F4E /* MNToolkit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31781716196CFADB001D3F4E /* MNToolkit.xcdatamodeld */; };
 		3178171A196CFADB001D3F4E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31781719196CFADB001D3F4E /* Images.xcassets */; };
+		31C8DB90197051F50020C609 /* private.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 31C8DB8E197051F50020C609 /* private.p12 */; };
+		31C8DB93197054930020C609 /* private.pem in Resources */ = {isa = PBXBuildFile; fileRef = 31C8DB92197054930020C609 /* private.pem */; };
+		31C8DB95197055160020C609 /* public.pem in Resources */ = {isa = PBXBuildFile; fileRef = 31C8DB94197055160020C609 /* public.pem */; };
+		31C8DB971970578C0020C609 /* public.der in Resources */ = {isa = PBXBuildFile; fileRef = 31C8DB961970578C0020C609 /* public.der */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,10 @@
 		31781719196CFADB001D3F4E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3178171F196CFADC001D3F4E /* MNToolkitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MNToolkitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		31781724196CFADC001D3F4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31C8DB8E197051F50020C609 /* private.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; name = private.p12; path = Resources/Keys/private.p12; sourceTree = "<group>"; };
+		31C8DB92197054930020C609 /* private.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = private.pem; path = Resources/Keys/private.pem; sourceTree = "<group>"; };
+		31C8DB94197055160020C609 /* public.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = public.pem; path = Resources/Keys/public.pem; sourceTree = "<group>"; };
+		31C8DB961970578C0020C609 /* public.der */ = {isa = PBXFileReference; lastKnownFileType = file; name = public.der; path = Resources/Keys/public.der; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +89,7 @@
 		3142682D196D084400973BC4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				31AF770719701FA1001C25E0 /* Keys */,
 				3142682E196D086F00973BC4 /* Images */,
 			);
 			name = Resources;
@@ -166,6 +175,17 @@
 			name = Security;
 			sourceTree = "<group>";
 		};
+		31AF770719701FA1001C25E0 /* Keys */ = {
+			isa = PBXGroup;
+			children = (
+				31C8DB961970578C0020C609 /* public.der */,
+				31C8DB94197055160020C609 /* public.pem */,
+				31C8DB92197054930020C609 /* private.pem */,
+				31C8DB8E197051F50020C609 /* private.p12 */,
+			);
+			name = Keys;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -246,6 +266,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				31426830196D087B00973BC4 /* dog.png in Resources */,
+				31C8DB93197054930020C609 /* private.pem in Resources */,
+				31C8DB90197051F50020C609 /* private.p12 in Resources */,
+				31C8DB95197055160020C609 /* public.pem in Resources */,
+				31C8DB971970578C0020C609 /* public.der in Resources */,
 				3178171A196CFADB001D3F4E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

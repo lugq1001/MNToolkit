@@ -14,10 +14,10 @@ static NSUInteger kOtpLength = 6;
 
 @implementation MNCryptor (OTP)
 
-+ (NSString *) otpPassword:(NSString *)seed serverTime:(unsigned long long)serverTimeSecond
++ (NSString *) oneTimePassword:(NSString *)gen serverTime:(unsigned long long)serverTimeSecond
 {
     NSString *time = [self formatTime2String:serverTimeSecond];
-    NSString *otp = [self generateOTP:[self toHexString:seed] clearText:[self toHexString:time]];
+    NSString *otp = [self generateOTP:[self toHexString:gen] clearText:[self toHexString:time]];
     return otp;
 }
 
@@ -28,7 +28,7 @@ static NSUInteger kOtpLength = 6;
     NSString *timeString = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:serverTimeSecond]];
     NSArray *arr = [timeString componentsSeparatedByString:@"-"];
     NSString *prefix = arr[0];
-    NSInteger suffix = [arr[1] unsignedIntegerValue] < 30 ? kTimeSeed[0] : kTimeSeed[1];
+    NSInteger suffix = [arr[1] unsignedIntValue] < 30 ? kTimeSeed[0] : kTimeSeed[1];
     NSString *result = [NSString stringWithFormat:@"%@%ld",prefix,(long)suffix];
     return result;
 }

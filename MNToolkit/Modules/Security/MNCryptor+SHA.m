@@ -22,78 +22,52 @@ typedef NS_ENUM(NSInteger, MNSHAType)
 
 @implementation MNCryptor (shaHash)
 
-+ (NSString *) sha1:(NSString *)string
++ (NSString *) sha1:(id)stringOrData
 {
-    return [self sha:string type:MNSHAType1];
+    return [self sha:stringOrData type:MNSHAType1];
 }
 
-+ (NSString *) sha224:(NSString *)string
++ (NSString *) sha224:(id)stringOrData
 {
-    return [self sha:string type:MNSHAType224];
+    return [self sha:stringOrData type:MNSHAType224];
 }
 
-+ (NSString *) sha256:(NSString *)string
++ (NSString *) sha256:(id)stringOrData
 {
-    return [self sha:string type:MNSHAType256];
+    return [self sha:stringOrData type:MNSHAType256];
 }
 
-+ (NSString *) sha384:(NSString *)string
++ (NSString *) sha384:(id)stringOrData
 {
-    return [self sha:string type:MNSHAType384];
+    return [self sha:stringOrData type:MNSHAType384];
 }
 
-+ (NSString *) sha512:(NSString *)string
++ (NSString *) sha512:(id)stringOrData
 {
-    return [self sha:string type:MNSHAType512];
+    return [self sha:stringOrData type:MNSHAType512];
 }
 
-+ (NSString *) sha1WithData:(NSData *)data
-{
-    return [self sha:data type:MNSHAType1];
-}
-
-+ (NSString *) sha224WithData:(NSData *)data
-{
-    return [self sha:data type:MNSHAType224];
-}
-
-+ (NSString *) sha256WithData:(NSData *)data
-{
-    return [self sha:data type:MNSHAType256];
-}
-
-+ (NSString *) sha384WithData:(NSData *)data
-{
-    return [self sha:data type:MNSHAType384];
-}
-
-+ (NSString *) sha512WithData:(NSData *)data
-{
-    return [self sha:data type:MNSHAType512];
-}
-
-
-+ (NSString *) sha1WithFile:(NSString *)filePath
++ (NSString *) sha1File:(NSString *)filePath
 {
     return (__bridge_transfer NSString *)FileSHAHashCreateWithPath((__bridge CFStringRef)filePath,FileHashDefaultChunkSizeForReadingData, MNSHAType1);
 }
 
-+ (NSString *) sha224WithFile:(NSString *)filePath
++ (NSString *) sha224File:(NSString *)filePath
 {
     return (__bridge_transfer NSString *)FileSHAHashCreateWithPath((__bridge CFStringRef)filePath,FileHashDefaultChunkSizeForReadingData, MNSHAType224);
 }
 
-+ (NSString *) sha256WithFile:(NSString *)filePath
++ (NSString *) sha256File:(NSString *)filePath
 {
     return (__bridge_transfer NSString *)FileSHAHashCreateWithPath((__bridge CFStringRef)filePath,FileHashDefaultChunkSizeForReadingData, MNSHAType256);
 }
 
-+ (NSString *) sha384WithFile:(NSString *)filePath
++ (NSString *) sha384File:(NSString *)filePath
 {
     return (__bridge_transfer NSString *)FileSHAHashCreateWithPath((__bridge CFStringRef)filePath,FileHashDefaultChunkSizeForReadingData, MNSHAType384);
 }
 
-+ (NSString *) sha512WithFile:(NSString *)filePath
++ (NSString *) sha512File:(NSString *)filePath
 {
     return (__bridge_transfer NSString *)FileSHAHashCreateWithPath((__bridge CFStringRef)filePath,FileHashDefaultChunkSizeForReadingData, MNSHAType512);
 }

@@ -13,22 +13,19 @@
 
 @implementation MNCryptor (md5Hash)
 
-+ (NSString *) md5:(NSString *)clearText
++ (NSString *) md5:(id)stringOrData
 {
-    const char *cStr = [clearText UTF8String];
-    unsigned char digest[CC_MD5_DIGEST_LENGTH];
-    CC_MD5( cStr, strlen(cStr), digest );
-    NSMutableString *result = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
-    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
-        [result appendFormat:@"%02x", digest[i]];
-    return result;
-}
-
-+ (NSString *) md5WithData:(NSData *)data
-{
-    const char *cStr = (const char *)[data bytes];
+    NSParameterAssert([stringOrData isKindOfClass: [NSData class]] || [stringOrData isKindOfClass: [NSString class]]);
+    const char *c;
+    if ([stringOrData isKindOfClass:[NSString class]]) {
+        NSString *string = (NSString *)stringOrData;
+        c = [string UTF8String];
+    } else {
+        NSData *data = (NSData *)stringOrData;
+        c = (const char *)[data bytes];
+    }
     unsigned char digist[CC_MD5_DIGEST_LENGTH];
-    CC_MD5( cStr, strlen(cStr), digist );
+    CC_MD5( c, strlen(c), digist );
     NSMutableString *result = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
     for(int  i =0; i<CC_MD5_DIGEST_LENGTH;i++){
         [result appendFormat:@"%02x",digist[i]];
@@ -36,7 +33,7 @@
     return result;
 }
 
-+ (NSString *) md5WithFile:(NSString *)filePath
++ (NSString *) md5File:(NSString *)filePath
 {
     return (__bridge_transfer NSString *)FileMD5HashCreateWithPath((__bridge CFStringRef)filePath,FileHashDefaultChunkSizeForReadingData);
 }
@@ -107,7 +104,7 @@ done:
     return result;
 }
 
-+ (NSString *) md5StringTo16bit:(NSString *)md5_32bit
++ (NSString *) md5To16bit:(NSString *)md5_32bit
 {
     NSString *md5_16 = [[md5_32bit substringToIndex:24] substringFromIndex:8];
     return md5_16;

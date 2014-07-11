@@ -50,10 +50,10 @@
 {
     NSTimeInterval millis = [[NSDate date] timeIntervalSince1970];
     unsigned long long now = [[NSNumber numberWithDouble:millis] unsignedLongLongValue];
-    NSString *otp = [MNCryptor otpPassword:self.key serverTime:now];
+    NSString *otp = [MNCryptor oneTimePassword:self.key serverTime:now];
     NSLog(@"----------------------MNCommonCryptor(otpPassword)----------------------");
     NSLog(@"time:%llu",now);
-    NSLog(@"otp:%@",otp);
+    NSLog(@"===otp===:%@",otp);
 }
 
 - (void) testMD5
@@ -64,17 +64,17 @@
     NSLog(@"cipher text:%@",md5);
     
     NSData *data = [self.clearText dataUsingEncoding:NSUTF8StringEncoding];
-    NSString *md5WithData = [MNCryptor md5WithData:data];
+    NSString *md5WithData = [MNCryptor md5:data];
     NSLog(@"----------------------MNCommonCryptor(md5WithData)----------------------");
     NSLog(@"data:%@",[data description]);
     NSLog(@"cipher text:%@",md5WithData);
     
-    NSString *md5WithFile = [MNCryptor md5WithFile:self.filePath];
+    NSString *md5WithFile = [MNCryptor md5File:self.filePath];
     NSLog(@"----------------------MNCommonCryptor(md5WithFile)----------------------");
     NSLog(@"file path:%@",self.filePath);
     NSLog(@"cipher text:%@",md5WithFile);
     
-    NSString *md5_16 = [MNCryptor md5StringTo16bit:md5WithFile];
+    NSString *md5_16 = [MNCryptor md5To16bit:md5WithFile];
     NSLog(@"----------------------MNCommonCryptor(md5To16bit)----------------------");
     NSLog(@"md5_32bit:%@",md5);
     NSLog(@"md5_16bit:%@",md5_16);
@@ -109,12 +109,12 @@
     NSLog(@"cipher text:%@",sha512);
     
     NSData *data = [self.clearText dataUsingEncoding:NSUTF8StringEncoding];
-    NSString *sha1WithData = [MNCryptor sha1WithData:data];
+    NSString *sha1WithData = [MNCryptor sha1:data];
     NSLog(@"----------------------MNCommonCryptor(sha1WithData)----------------------");
     NSLog(@"clear text:%@",self.clearText);
     NSLog(@"cipher text:%@",sha1WithData);
     
-    NSString *sha1WithFile = [MNCryptor sha1WithFile:self.filePath];
+    NSString *sha1WithFile = [MNCryptor sha1File:self.filePath];
     NSLog(@"----------------------MNCommonCryptor(sha1WithFile)----------------------");
     NSLog(@"file path:%@",self.filePath);
     NSLog(@"cipher text:%@",sha1WithFile);
@@ -124,38 +124,38 @@
 
 - (void) testBase64Encode
 {
-    NSString *b64Text = [MNCryptor base64Encode:self.clearText];
+    NSString *b64Text = [MNCryptor b64Encode:self.clearText];
     NSLog(@"----------------------MNCommonCryptor(base64Encode)----------------------");
     NSLog(@"clear text:%@",self.clearText);
     NSLog(@"base64 text:%@",b64Text);
     
-    NSString *clearText = [MNCryptor base64Decode:b64Text];
+    NSString *clearText = [MNCryptor b64Decode:b64Text];
     NSLog(@"----------------------MNCommonCryptor(base64Decode)----------------------");
     NSLog(@"base64 text:%@",b64Text);
     NSLog(@"clear text:%@",clearText);
     XCTAssertEqualObjects(clearText, self.clearText, @"Test base64 encoding failed");
     
     NSData *data = [self.clearText dataUsingEncoding:NSASCIIStringEncoding];
-    b64Text = [MNCryptor base64EncodeWithData:data];
+    b64Text = [MNCryptor b64Encode:data];
     NSLog(@"----------------------MNCommonCryptor(base64EncodeWithData)----------------------");
     NSLog(@"clear data:%s",[[data description] UTF8String]);
     NSLog(@"clear text:%@",self.clearText);
     NSLog(@"base64 text:%@",b64Text);
     
-    clearText = [MNCryptor base64Decode:b64Text];
+    clearText = [MNCryptor b64Decode:b64Text];
     NSLog(@"----------------------MNCommonCryptor(base64Decode)----------------------");
     NSLog(@"base64 text:%@",b64Text);
     NSLog(@"clear text:%@",clearText);
     XCTAssertEqualObjects(clearText, self.clearText, @"Test base64 encoding failed");
     
-    data = [MNCryptor base64DecodeForData:b64Text];
+    data = [MNCryptor b64Decode4Data:b64Text];
     NSLog(@"----------------------MNCommonCryptor(base64DecodeForData)----------------------");
     NSLog(@"base64 text:%@",b64Text);
     NSLog(@"clear data:%s",[[data description] UTF8String]);
     
     //test file
     data = [NSData dataWithContentsOfFile:self.filePath];
-    b64Text = [MNCryptor base64EncodeWithData:data];
+    b64Text = [MNCryptor b64Encode:data];
     NSLog(@"----------------------MNCommonCryptor(base64EncodeWithData)----------------------");
     NSLog(@"file path:%@",self.filePath);
     NSLog(@"base64 text:%@",b64Text);
@@ -180,9 +180,9 @@
 {
     {
         NSData *data = [self.clearText dataUsingEncoding:NSUTF8StringEncoding];
-        NSString *dataB64 = [MNCryptor base64EncodeWithData:data];
-        NSData *aes256encrypt = [MNCryptor aes256EncryptData:data key:self.key];
-        NSString *encryptB64 = [MNCryptor base64EncodeWithData:aes256encrypt];
+        NSString *dataB64 = [MNCryptor b64Encode:data];
+        NSData *aes256encrypt = [MNCryptor aes256Encrypt:data key:self.key];
+        NSString *encryptB64 = [MNCryptor b64Encode:aes256encrypt];
         NSLog(@"----------------------MNCommonCryptor(aes256Encrypt)----------------------");
         NSLog(@"clear text:%@",self.clearText);
         NSLog(@"clear data:%s",[[data description] UTF8String]);
@@ -190,9 +190,9 @@
         NSLog(@"cipher text base64-md5:%@",[MNCryptor md5:encryptB64]);
         NSLog(@"cipher data:%s",[[aes256encrypt description] UTF8String]);
         
-        NSData *cipherData = [MNCryptor base64DecodeForData:encryptB64];
-        data = [MNCryptor aes256DecryptData:cipherData key:self.key];
-        NSString *decryptB64 = [MNCryptor base64EncodeWithData:data];
+        NSData *cipherData = [MNCryptor b64Decode4Data:encryptB64];
+        data = [MNCryptor aes256Decrypt:cipherData key:self.key];
+        NSString *decryptB64 = [MNCryptor b64Encode:data];
         NSLog(@"----------------------MNCommonCryptor(aes256Decrypt)----------------------");
         NSLog(@"cipher data:%s",[[cipherData description] UTF8String]);
         NSLog(@"clear text:%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
@@ -204,14 +204,14 @@
     {
         
         NSData *fileData = [NSData dataWithContentsOfFile:self.filePath];
-        NSData *encrypt = [MNCryptor aes256EncryptData:fileData key:self.key];
-        NSString *encryptB64 = [MNCryptor base64EncodeWithData:encrypt];
+        NSData *encrypt = [MNCryptor aes256Encrypt:fileData key:self.key];
+        NSString *encryptB64 = [MNCryptor b64Encode:encrypt];
         
         //test file
         NSString *target = [NSTemporaryDirectory() stringByAppendingPathComponent:@"dog.bat"];
-        [MNCryptor aes256EncryptFromFile:self.filePath to:target key:self.key];
+        [MNCryptor aes256EncryptFile:self.filePath to:target key:self.key];
         NSData *encryptData = [NSData dataWithContentsOfFile:target];
-        NSString *targetB64 = [MNCryptor base64EncodeWithData:encryptData];
+        NSString *targetB64 = [MNCryptor b64Encode:encryptData];
         NSLog(@"----------------------MNCommonCryptor(aes256EncryptFromFile)----------------------");
         NSLog(@"file path:%@",self.filePath);
         NSLog(@"file encrypt b64-md5:%@",[MNCryptor md5:encryptB64]);
@@ -219,15 +219,57 @@
         //XCTAssertEqualObjects([MNCryptor md5:encryptB64], [MNCryptor md5:targetB64], @"Test aes file failed");
         
         NSString *file = [NSTemporaryDirectory() stringByAppendingPathComponent:@"dog.png"];
-        [MNCryptor aes256DecryptFromFile:target to:file key:self.key];
+        [MNCryptor aes256DecryptFile:target to:file key:self.key];
         NSData *decryptData = [NSData dataWithContentsOfFile:file];
-        NSString *decryptB64 = [MNCryptor base64EncodeWithData:decryptData];
+        NSString *decryptB64 = [MNCryptor b64Encode:decryptData];
         NSLog(@"----------------------MNCommonCryptor(aes256DecryptFromFile)----------------------");
         NSLog(@"file path:%@",file);
         NSLog(@"file encrypt b64-md5:%@",[MNCryptor md5:decryptB64]);
-        NSLog(@"original data b64-md5:%@",[MNCryptor md5:[MNCryptor base64EncodeWithData:fileData]]);
-        XCTAssertEqualObjects([MNCryptor md5:decryptB64], [MNCryptor md5:[MNCryptor base64EncodeWithData:fileData]], @"Test aes file failed");
+        NSLog(@"original data b64-md5:%@",[MNCryptor md5:[MNCryptor b64Encode:fileData]]);
+        XCTAssertEqualObjects([MNCryptor md5:decryptB64], [MNCryptor md5:[MNCryptor b64Encode:fileData]], @"Test aes file failed");
     }
 }
 
+- (void) testRSA
+{
+    NSData *clearData = [self.clearText dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *publicKeyPath = [[NSBundle mainBundle] pathForResource:@"public" ofType:@"der"];
+    NSString *privateKeyPath = [[NSBundle mainBundle] pathForResource:@"private" ofType:@"p12"];
+    SecKeyRef privateKeyRef = [MNCryptor rsaPrivateKeyRef:privateKeyPath keyPassword:@"123456"];
+    SecKeyRef publicKeyRef = [MNCryptor rsaPublicKeyRef:publicKeyPath];
+    
+    NSData *encryptDataWithPublic = [MNCryptor rsaEncryptWithPublicKey:clearData publicKeyRef:publicKeyRef];
+    NSLog(@"----------------------MNCommonCryptor(rsaEncryptWithPublicKey)----------------------");
+    NSLog(@"clear data :%s",[[clearData description] UTF8String]);
+    
+    NSData *decryptDataWithPrivate = [MNCryptor rsaDecryptWithPrivateKey:encryptDataWithPublic privateKeyRef:privateKeyRef];
+    NSLog(@"----------------------MNCommonCryptor(rsaDecryptWithPrivateKey)----------------------");;
+    NSLog(@"decrypt data :%s",[[decryptDataWithPrivate description] UTF8String]);
+    
+    NSData *signDataWithPrivate = [MNCryptor rsaSignWithPrivateKey:clearData privateKeyRef:privateKeyRef];
+    NSLog(@"----------------------MNCommonCryptor(rsaSignWithPrivateKey)----------------------");
+    NSLog(@"clear data :%s",[[clearData description] UTF8String]);
+    NSLog(@"sign data :%s",[[signDataWithPrivate description] UTF8String]);
+    
+    BOOL verifyDataWithPublic = [MNCryptor rsaVerifyWithPublicKey:clearData signature:signDataWithPrivate publicKeyRef:publicKeyRef];
+    NSLog(@"----------------------MNCommonCryptor(verifyDataWithPublic)----------------------");;
+    NSLog(@"verifyDataWithPublic:%hhd",verifyDataWithPublic);
+    XCTAssert(verifyDataWithPublic == YES, @"verifyDataWithPublic passed");
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

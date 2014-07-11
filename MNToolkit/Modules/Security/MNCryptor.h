@@ -15,10 +15,9 @@
 @interface MNCryptor : NSObject
 
 #pragma mark -Base64编码
-+ (NSString *) base64Encode:(NSString *)clearText;
-+ (NSString *) base64EncodeWithData:(NSData *)data;
-+ (NSString *) base64Decode:(NSString *)b64String;
-+ (NSData *)   base64DecodeForData:(NSString *)b64String;
++ (NSString *) b64Encode:(id)stringOrData;
++ (NSString *) b64Decode:(NSString *)b64String;
++ (NSData *)   b64Decode4Data:(NSString *)b64String;
 
 #pragma mark -URL编码
 + (NSString *) urlEncode:(NSString *)clearText;
@@ -29,67 +28,61 @@
 #pragma mark -OTP
 @interface MNCryptor (OTP)
 
-+ (NSString *) otpPassword:(NSString *)seed serverTime:(unsigned long long)serverTimeSecond;
++ (NSString *) oneTimePassword:(NSString *)gen serverTime:(unsigned long long)serverTimeSecond;
 
 @end
 
 #pragma mark -MD5 HASH
 @interface MNCryptor (md5Hash)
 
-+ (NSString *) md5:(NSString *)clearText;
-+ (NSString *) md5WithData:(NSData *)data;
-+ (NSString *) md5WithFile:(NSString *)filePath;
-+ (NSString *) md5StringTo16bit:(NSString *)md5_32bit;
++ (NSString *) md5:(id)stringOrData;
++ (NSString *) md5File:(NSString *)filePath;
++ (NSString *) md5To16bit:(NSString *)md5_32bit;
 
 @end
 
 #pragma mark -SHA HASH
 @interface MNCryptor (shaHash)
 
-+ (NSString *) sha1:(NSString *)clearText;
-+ (NSString *) sha224:(NSString *)clearText;
-+ (NSString *) sha256:(NSString *)clearText;
-+ (NSString *) sha384:(NSString *)clearText;
-+ (NSString *) sha512:(NSString *)clearText;
++ (NSString *) sha1:(id)stringOrData;
++ (NSString *) sha224:(id)stringOrData;
++ (NSString *) sha256:(id)stringOrData;
++ (NSString *) sha384:(id)stringOrData;
++ (NSString *) sha512:(id)stringOrData;
 
-+ (NSString *) sha1WithData:(NSData *)data;
-+ (NSString *) sha224WithData:(NSData *)data;
-+ (NSString *) sha256WithData:(NSData *)data;
-+ (NSString *) sha384WithData:(NSData *)data;
-+ (NSString *) sha512WithData:(NSData *)data;
-
-+ (NSString *) sha1WithFile:(NSString *)filePath;
-+ (NSString *) sha224WithFile:(NSString *)filePath;
-+ (NSString *) sha256WithFile:(NSString *)filePath;
-+ (NSString *) sha384WithFile:(NSString *)filePath;
-+ (NSString *) sha512WithFile:(NSString *)filePath;
++ (NSString *) sha1File:(NSString *)filePath;
++ (NSString *) sha224File:(NSString *)filePath;
++ (NSString *) sha256File:(NSString *)filePath;
++ (NSString *) sha384File:(NSString *)filePath;
++ (NSString *) sha512File:(NSString *)filePath;
 
 @end
 
 #pragma mark -AES
 @interface MNCryptor (AES)
 
-+ (NSData *) aes256Encrypt:(NSString *)clearText key:(id)key;
-+ (NSData *) aes256Decrypt:(NSString *)ciperText key:(id)key;
-+ (NSData *) aes256EncryptData:(NSData *)data key:(id)key;
-+ (NSData *) aes256DecryptData:(NSData *)data key:(id)key;
++ (NSData *) aes256Encrypt:(id)stringOrData key:(id)key;
++ (NSData *) aes256Decrypt:(id)stringOrData key:(id)key;
 
-+ (BOOL)     aes256EncryptFromFile:(NSString *)filePath
-                                to:(NSString *)targetPath
-                               key:(id)key;
-+ (BOOL)     aes256DecryptFromFile:(NSString *)filePath
-                                to:(NSString *)targetPath
-                               key:(id)key;
++ (BOOL)     aes256EncryptFile:(NSString *)filePath
+                            to:(NSString *)targetFilePath
+                            key:(id)key;
++ (BOOL)     aes256DecryptFile:(NSString *)filePath
+                            to:(NSString *)targetFilePath
+                            key:(id)key;
 @end
 
 #pragma mark -RSA
 @interface MNCryptor (RSA)
 
-+ (SecKeyRef) rsaPublic:(NSData *)data;
-+ (NSData *) rsaDecryptData:(NSData *)data;
++ (SecKeyRef) rsaPublicKeyRef:(NSString *)publicKeyPath;
++ (SecKeyRef) rsaPrivateKeyRef:(NSString *)privateKeyPath keyPassword:(NSString *)password;
++ (NSData *)  rsaEncryptWithPublicKey:(NSData *)data publicKeyRef:(SecKeyRef)publicKeyRef;
++ (NSData *)  rsaDecryptWithPrivateKey:(NSData *)data privateKeyRef:(SecKeyRef)privateKeyRef;
 
-+ (NSData *) rsaEncryptData:(NSData *)data;
-+ (NSData *) rsaDecryptData:(NSData *)data;
++ (NSData *)  rsaSignWithPrivateKey:(NSData *)data privateKeyRef:(SecKeyRef)privateKeyRef;
++ (BOOL)      rsaVerifyWithPublicKey:(NSData *)data signature:(NSData *)signature publicKeyRef:(SecKeyRef)publicKeyRef;
+
 
 @end
 

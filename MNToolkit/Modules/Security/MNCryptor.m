@@ -10,27 +10,28 @@
 
 @implementation MNCryptor 
 
-+ (NSString *) base64Encode:(NSString *)clearText
++ (NSString *) b64Encode:(id)stringOrData
 {
-    NSData *originData = [clearText dataUsingEncoding:NSASCIIStringEncoding];
-    NSString *result = [originData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
-    return result;
-}
-
-+ (NSString *) base64EncodeWithData:(NSData *)data
-{
+    NSParameterAssert([stringOrData isKindOfClass: [NSData class]] || [stringOrData isKindOfClass: [NSString class]]);
+    NSData *data;
+    if ([stringOrData isKindOfClass:[NSString class]]) {
+        NSString *string = (NSString *)stringOrData;
+        data = [string dataUsingEncoding:NSASCIIStringEncoding];
+    } else {
+        data = (NSData *)stringOrData;
+    }
     NSString *result = [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
     return result;
 }
 
-+ (NSString *) base64Decode:(NSString *)b64String
++ (NSString *) b64Decode:(NSString *)b64String
 {
     NSData *decodeData = [[NSData alloc] initWithBase64EncodedString:b64String options:0];
     NSString *result = [[NSString alloc] initWithData:decodeData encoding:NSASCIIStringEncoding];
     return result;
 }
 
-+ (NSData *) base64DecodeForData:(NSString *)b64String
++ (NSData *) b64Decode4Data:(NSString *)b64String
 {
     NSData *decodeData = [[NSData alloc] initWithBase64EncodedString:b64String options:0];
     return decodeData;
