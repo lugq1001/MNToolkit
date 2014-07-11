@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3103D0C2196F8E0A007E880F /* MNCryptor+OTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 3103D0C1196F8E0A007E880F /* MNCryptor+OTP.m */; };
+		3103D0C5196F9DC7007E880F /* MNCryptor+RSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 3103D0C4196F9DC7007E880F /* MNCryptor+RSA.m */; };
 		3142682A196D034D00973BC4 /* MNCryptor+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 31426828196D034D00973BC4 /* MNCryptor+MD5.m */; };
 		3142682C196D03D300973BC4 /* MNCryptorTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3142682B196D03D300973BC4 /* MNCryptorTestCase.m */; };
 		31426830196D087B00973BC4 /* dog.png in Resources */ = {isa = PBXBuildFile; fileRef = 3142682F196D087B00973BC4 /* dog.png */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		3103D0C1196F8E0A007E880F /* MNCryptor+OTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MNCryptor+OTP.m"; path = "Modules/Security/MNCryptor+OTP.m"; sourceTree = "<group>"; };
+		3103D0C4196F9DC7007E880F /* MNCryptor+RSA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MNCryptor+RSA.m"; path = "Modules/Security/MNCryptor+RSA.m"; sourceTree = "<group>"; };
 		31426828196D034D00973BC4 /* MNCryptor+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MNCryptor+MD5.m"; path = "Modules/Security/MNCryptor+MD5.m"; sourceTree = "<group>"; };
 		31426829196D034D00973BC4 /* MNCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MNCryptor.h; path = Modules/Security/MNCryptor.h; sourceTree = "<group>"; };
 		3142682B196D03D300973BC4 /* MNCryptorTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCryptorTestCase.m; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				31426828196D034D00973BC4 /* MNCryptor+MD5.m */,
 				31426835196D1E9500973BC4 /* MNCryptor+SHA.m */,
 				3142683A196D391800973BC4 /* MNCryptor+AES.m */,
+				3103D0C4196F9DC7007E880F /* MNCryptor+RSA.m */,
 			);
 			name = Security;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31781715196CFADB001D3F4E /* AppDelegate.m in Sources */,
+				3103D0C5196F9DC7007E880F /* MNCryptor+RSA.m in Sources */,
 				31781712196CFADB001D3F4E /* main.m in Sources */,
 				31426836196D1E9500973BC4 /* MNCryptor+SHA.m in Sources */,
 				31426838196D2D9500973BC4 /* MNCryptor.m in Sources */,

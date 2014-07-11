@@ -181,7 +181,7 @@
     {
         NSData *data = [self.clearText dataUsingEncoding:NSUTF8StringEncoding];
         NSString *dataB64 = [MNCryptor base64EncodeWithData:data];
-        NSData *aes256encrypt = [MNCryptor aes256EncryptWithData:data key:self.key];
+        NSData *aes256encrypt = [MNCryptor aes256EncryptData:data key:self.key];
         NSString *encryptB64 = [MNCryptor base64EncodeWithData:aes256encrypt];
         NSLog(@"----------------------MNCommonCryptor(aes256Encrypt)----------------------");
         NSLog(@"clear text:%@",self.clearText);
@@ -191,7 +191,7 @@
         NSLog(@"cipher data:%s",[[aes256encrypt description] UTF8String]);
         
         NSData *cipherData = [MNCryptor base64DecodeForData:encryptB64];
-        data = [MNCryptor aes256DecryptWithData:cipherData key:self.key];
+        data = [MNCryptor aes256DecryptData:cipherData key:self.key];
         NSString *decryptB64 = [MNCryptor base64EncodeWithData:data];
         NSLog(@"----------------------MNCommonCryptor(aes256Decrypt)----------------------");
         NSLog(@"cipher data:%s",[[cipherData description] UTF8String]);
@@ -204,7 +204,7 @@
     {
         
         NSData *fileData = [NSData dataWithContentsOfFile:self.filePath];
-        NSData *encrypt = [MNCryptor aes256EncryptWithData:fileData key:self.key];
+        NSData *encrypt = [MNCryptor aes256EncryptData:fileData key:self.key];
         NSString *encryptB64 = [MNCryptor base64EncodeWithData:encrypt];
         
         //test file

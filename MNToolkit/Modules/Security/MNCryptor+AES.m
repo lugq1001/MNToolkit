@@ -23,21 +23,21 @@ static Byte iv[]   = {5,2,1,1,9,9,4,4};
 
 + (NSData *) aes256Encrypt:(NSString *)clearText key:(id)key
 {
-    return [self aes256EncryptWithData:[clearText dataUsingEncoding:NSUTF8StringEncoding] key:key];
+    return [self aes256EncryptData:[clearText dataUsingEncoding:NSUTF8StringEncoding] key:key];
 }
 
 + (NSData *) aes256Decrypt:(NSString *)ciperText key:(id)key
 {
-    return [self aes256DecryptWithData:[ciperText dataUsingEncoding:NSUTF8StringEncoding] key:key];
+    return [self aes256DecryptData:[ciperText dataUsingEncoding:NSUTF8StringEncoding] key:key];
 }
 
-+ (NSData *) aes256EncryptWithData:(NSData *)data key:(id)key
++ (NSData *) aes256EncryptData:(NSData *)data key:(id)key
 {
     NSData *password = [self generatePasswordWithKey:key];
     return [self aes256cryptor:kCCEncrypt data:data key:password];
 }
 
-+ (NSData *) aes256DecryptWithData:(NSData *)data key:(id)key
++ (NSData *) aes256DecryptData:(NSData *)data key:(id)key
 {
     NSData *password = [self generatePasswordWithKey:key];
     return [self aes256cryptor:kCCDecrypt data:data key:password];

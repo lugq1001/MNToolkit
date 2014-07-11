@@ -27,14 +27,14 @@
 @end
 
 #pragma mark -OTP
-@interface MNCryptor(OTP)
+@interface MNCryptor (OTP)
 
 + (NSString *) otpPassword:(NSString *)seed serverTime:(unsigned long long)serverTimeSecond;
 
 @end
 
 #pragma mark -MD5 HASH
-@interface MNCryptor(md5Hash)
+@interface MNCryptor (md5Hash)
 
 + (NSString *) md5:(NSString *)clearText;
 + (NSString *) md5WithData:(NSData *)data;
@@ -44,7 +44,7 @@
 @end
 
 #pragma mark -SHA HASH
-@interface MNCryptor(shaHash)
+@interface MNCryptor (shaHash)
 
 + (NSString *) sha1:(NSString *)clearText;
 + (NSString *) sha224:(NSString *)clearText;
@@ -67,12 +67,12 @@
 @end
 
 #pragma mark -AES
-@interface MNCryptor(AES)
+@interface MNCryptor (AES)
 
 + (NSData *) aes256Encrypt:(NSString *)clearText key:(id)key;
 + (NSData *) aes256Decrypt:(NSString *)ciperText key:(id)key;
-+ (NSData *) aes256EncryptWithData:(NSData *)data key:(id)key;
-+ (NSData *) aes256DecryptWithData:(NSData *)data key:(id)key;
++ (NSData *) aes256EncryptData:(NSData *)data key:(id)key;
++ (NSData *) aes256DecryptData:(NSData *)data key:(id)key;
 
 + (BOOL)     aes256EncryptFromFile:(NSString *)filePath
                                 to:(NSString *)targetPath
@@ -83,7 +83,13 @@
 @end
 
 #pragma mark -RSA
-@interface MNCryptor(RSA)
+@interface MNCryptor (RSA)
+
++ (SecKeyRef) rsaPublic:(NSData *)data;
++ (NSData *) rsaDecryptData:(NSData *)data;
+
++ (NSData *) rsaEncryptData:(NSData *)data;
++ (NSData *) rsaDecryptData:(NSData *)data;
 
 @end
 
