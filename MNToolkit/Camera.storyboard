@@ -23,7 +23,7 @@
         <!--Camera Controller-->
         <scene sceneID="8s2-n0-xga">
             <objects>
-                <viewController id="Z4X-As-Ocs" customClass="CameraController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CameraController" id="Z4X-As-Ocs" customClass="CameraController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="29r-EJ-vz2"/>
                         <viewControllerLayoutGuide type="bottom" id="mQC-nF-QZc"/>

@@ -10,6 +10,9 @@
 		3116DF8B197666CE0031AB32 /* AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 3116DF8A197666CE0031AB32 /* AppColors.m */; };
 		3116DF8D19767B210031AB32 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3116DF8C19767B210031AB32 /* Camera.storyboard */; };
 		3116DF94197684220031AB32 /* CameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3116DF93197684220031AB32 /* CameraController.m */; };
+		3116DF981976A44B0031AB32 /* TabBarLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 3116DF971976A44B0031AB32 /* TabBarLogic.m */; };
+		3116DF9C1976AFE20031AB32 /* ImageProcessLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 3116DF9B1976AFE20031AB32 /* ImageProcessLogic.m */; };
+		3116DFA01976B0010031AB32 /* CameraLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 3116DF9F1976B0010031AB32 /* CameraLogic.m */; };
 		312651011976520300EFA203 /* MNToolkit+UserInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 312651001976520300EFA203 /* MNToolkit+UserInterface.m */; };
 		3126510D19765F7700EFA203 /* ImageProcess.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3126510C19765F7700EFA203 /* ImageProcess.storyboard */; };
 		3126510F19765FD200EFA203 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3126510E19765FD200EFA203 /* Main.storyboard */; };
@@ -43,6 +46,12 @@
 		3116DF8C19767B210031AB32 /* Camera.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
 		3116DF92197684220031AB32 /* CameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CameraController.h; path = Controller/Camera/CameraController.h; sourceTree = "<group>"; };
 		3116DF93197684220031AB32 /* CameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CameraController.m; path = Controller/Camera/CameraController.m; sourceTree = "<group>"; };
+		3116DF961976A44B0031AB32 /* TabBarLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabBarLogic.h; path = Logic/TabBarLogic.h; sourceTree = "<group>"; };
+		3116DF971976A44B0031AB32 /* TabBarLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabBarLogic.m; path = Logic/TabBarLogic.m; sourceTree = "<group>"; };
+		3116DF9A1976AFE20031AB32 /* ImageProcessLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageProcessLogic.h; path = Logic/ImageProcess/ImageProcessLogic.h; sourceTree = "<group>"; };
+		3116DF9B1976AFE20031AB32 /* ImageProcessLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageProcessLogic.m; path = Logic/ImageProcess/ImageProcessLogic.m; sourceTree = "<group>"; };
+		3116DF9E1976B0010031AB32 /* CameraLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CameraLogic.h; path = Logic/Camera/CameraLogic.h; sourceTree = "<group>"; };
+		3116DF9F1976B0010031AB32 /* CameraLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CameraLogic.m; path = Logic/Camera/CameraLogic.m; sourceTree = "<group>"; };
 		312651001976520300EFA203 /* MNToolkit+UserInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MNToolkit+UserInterface.m"; path = "Core/MNToolkit+UserInterface.m"; sourceTree = "<group>"; };
 		3126510C19765F7700EFA203 /* ImageProcess.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ImageProcess.storyboard; path = Storyboard/ImageProcess.storyboard; sourceTree = "<group>"; };
 		3126510E19765FD200EFA203 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Storyboard/Main.storyboard; sourceTree = "<group>"; };
@@ -106,15 +115,44 @@
 			name = Camera;
 			sourceTree = "<group>";
 		};
+		3116DF951976A4230031AB32 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				3116DF9D1976AFE90031AB32 /* Camera */,
+				3116DF991976AFCB0031AB32 /* ImageProcess */,
+				3116DF961976A44B0031AB32 /* TabBarLogic.h */,
+				3116DF971976A44B0031AB32 /* TabBarLogic.m */,
+			);
+			name = Logic;
+			sourceTree = "<group>";
+		};
+		3116DF991976AFCB0031AB32 /* ImageProcess */ = {
+			isa = PBXGroup;
+			children = (
+				3116DF9A1976AFE20031AB32 /* ImageProcessLogic.h */,
+				3116DF9B1976AFE20031AB32 /* ImageProcessLogic.m */,
+			);
+			name = ImageProcess;
+			sourceTree = "<group>";
+		};
+		3116DF9D1976AFE90031AB32 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				3116DF9E1976B0010031AB32 /* CameraLogic.h */,
+				3116DF9F1976B0010031AB32 /* CameraLogic.m */,
+			);
+			name = Camera;
+			sourceTree = "<group>";
+		};
 		3126510719765A6800EFA203 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3116DF8E197683BD0031AB32 /* Camera */,
-				312651161976610E00EFA203 /* ImageProcess */,
 				3126511019765FDC00EFA203 /* ViewController.h */,
 				3126511119765FDC00EFA203 /* ViewController.m */,
-				3126511219765FDC00EFA203 /* TabBarController.m */,
+				3116DF8E197683BD0031AB32 /* Camera */,
+				312651161976610E00EFA203 /* ImageProcess */,
 				3126511319765FDC00EFA203 /* TabBarController.h */,
+				3126511219765FDC00EFA203 /* TabBarController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -161,6 +199,7 @@
 			children = (
 				31FA6BA71976270F00294FFD /* Core */,
 				3126510719765A6800EFA203 /* Controller */,
+				3116DF951976A4230031AB32 /* Logic */,
 				3126510B19765E9600EFA203 /* Storyboard */,
 				3116DF881976669B0031AB32 /* Helper */,
 				31781713196CFADB001D3F4E /* AppDelegate.h */,
@@ -329,9 +368,12 @@
 				312651011976520300EFA203 /* MNToolkit+UserInterface.m in Sources */,
 				3116DF8B197666CE0031AB32 /* AppColors.m in Sources */,
 				31781712196CFADB001D3F4E /* main.m in Sources */,
+				3116DF9C1976AFE20031AB32 /* ImageProcessLogic.m in Sources */,
 				31FA6BB419763EAC00294FFD /* MNToolkit.m in Sources */,
 				31781718196CFADB001D3F4E /* MNToolkit.xcdatamodeld in Sources */,
+				3116DF981976A44B0031AB32 /* TabBarLogic.m in Sources */,
 				3116DF94197684220031AB32 /* CameraController.m in Sources */,
+				3116DFA01976B0010031AB32 /* CameraLogic.m in Sources */,
 				31FA6BAF1976385D00294FFD /* MNToolkit+SandboxPath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

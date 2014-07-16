@@ -1,40 +1,43 @@
 //
-//  ViewController.m
+//  TabBarLogic.m
 //  MNToolkit
 //
 //  Created by 陆广庆 on 14/7/16.
 //  Copyright (c) 2014年 陆广庆. All rights reserved.
 //
 
-#import "ViewController.h"
-#import "MNToolkit.h"
+#import "TabBarLogic.h"
 #import "TabBarController.h"
-#import "ImageProcessController.h"
+#import "MNToolkit.h"
 #import "AppColors.h"
+#import "ImageProcessLogic.h"
+#import "CameraLogic.h"
 
-@interface ViewController ()
+static NSString * const kSBMain = @"Main";
+static NSString * const kTabBarControllerIdentifier = @"TabBarController";
 
-@end
+@implementation TabBarLogic
 
-@implementation ViewController
-
-- (void)viewDidLoad
+- (instancetype)init
 {
-    [super viewDidLoad];
+    if (self = [super init]) {
+        self.userInterface = [self createUserInterface];
+    }
+    return self;
 }
 
-- (IBAction)customTabBarController:(id)sender {
-    UIStoryboard *sb = [MNToolkit getStroyboard:@"Main"];
-    TabBarController *tabBarController = [sb instantiateViewControllerWithIdentifier:@"TabBarController"];
+- (UIViewController *)createUserInterface
+{
+    UIStoryboard *sb = [MNToolkit getStroyboard:kSBMain];
+    TabBarController *tabBarController = [sb instantiateViewControllerWithIdentifier:kTabBarControllerIdentifier];
+    //tanController
+    ImageProcessLogic *imageLogic = [[ImageProcessLogic alloc] init];
+    UINavigationController *imageNav = [imageLogic getRootNavigationController];
     
-    //image process
-    UIStoryboard *imageProcessSB = [MNToolkit getStroyboard:@"ImageProcess"];
-    UIViewController *imageProcessNav = [imageProcessSB instantiateViewControllerWithIdentifier:@"ImageProcessRootController"];
+    CameraLogic *cameraLogic = [[CameraLogic alloc] init];
+    UINavigationController *cameraNav = [cameraLogic getRootNavigationController];
     
-    UIStoryboard *cameraSB = [MNToolkit getStroyboard:@"Camera"];
-    UIViewController *cameraNav = [cameraSB instantiateViewControllerWithIdentifier:@"CameraRootController"];
-    
-    NSArray *tabControllers = @[imageProcessNav,cameraNav];
+    NSArray *tabControllers = @[imageNav,cameraNav];
     NSArray *tabTexts = @[@"ImageProcess",@"Camera"];
     NSArray *tabIcons = @[@"ic_tab",@"ic_tab", ];
     NSArray *tabSelectedIcons = @[@"ic_tab_s",@"ic_tab_s"];
@@ -60,8 +63,30 @@
     //文字颜色
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[AppColors tabBarTextColor]} forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[AppColors tabBarTextColorSelected]} forState:UIControlStateSelected];
-    [self presentViewController:tabBarController animated:YES completion:nil];
-    
+    return tabBarController;
 }
+
+@end
+
+#pragma mark -Wireframe
+@implementation TabBarLogic (Wireframe)
+
+//跳转至TabbarController
+- (void)presentTabBarFromViewController:(UIViewController *)controller
+{
+    [controller presentViewController:self.userInterface animated:YES completion:nil];
+}
+
+@end
+
+#pragma mark -Presenter
+@implementation TabBarLogic (Presenter)
+
+@end
+
+#pragma mark -Interactor
+@implementation TabBarLogic (Interactor)
+
+
 
 @end

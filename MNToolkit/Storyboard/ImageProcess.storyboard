@@ -23,7 +23,7 @@
         <!--Image Process Controller-->
         <scene sceneID="YvD-nn-c6f">
             <objects>
-                <viewController id="S75-fS-5Hl" customClass="ImageProcessController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImageProcessController" id="S75-fS-5Hl" customClass="ImageProcessController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WkB-Ii-CJX"/>
                         <viewControllerLayoutGuide type="bottom" id="Vkr-DV-v1P"/>
