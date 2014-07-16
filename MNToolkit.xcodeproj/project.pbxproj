@@ -11,6 +11,10 @@
 		31781715196CFADB001D3F4E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 31781714196CFADB001D3F4E /* AppDelegate.m */; };
 		31781718196CFADB001D3F4E /* MNToolkit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31781716196CFADB001D3F4E /* MNToolkit.xcdatamodeld */; };
 		3178171A196CFADB001D3F4E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31781719196CFADB001D3F4E /* Images.xcassets */; };
+		31FA6BAA1976279100294FFD /* NSString+MNToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 31FA6BA91976279100294FFD /* NSString+MNToolkit.m */; };
+		31FA6BAC197629BE00294FFD /* NSString+MNToolkitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 31FA6BAB197629BE00294FFD /* NSString+MNToolkitTests.m */; };
+		31FA6BAF1976385D00294FFD /* MNToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 31FA6BAE1976385D00294FFD /* MNToolkit.m */; };
+		31FA6BB219763C2800294FFD /* dog.png in Resources */ = {isa = PBXBuildFile; fileRef = 31FA6BB119763C2800294FFD /* dog.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +37,12 @@
 		31781719196CFADB001D3F4E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3178171F196CFADC001D3F4E /* MNToolkitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MNToolkitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		31781724196CFADC001D3F4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31FA6BA81976279100294FFD /* NSString+MNToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MNToolkit.h"; path = "Core/NSString+MNToolkit.h"; sourceTree = "<group>"; };
+		31FA6BA91976279100294FFD /* NSString+MNToolkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MNToolkit.m"; path = "Core/NSString+MNToolkit.m"; sourceTree = "<group>"; };
+		31FA6BAB197629BE00294FFD /* NSString+MNToolkitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MNToolkitTests.m"; sourceTree = "<group>"; };
+		31FA6BAD1976385D00294FFD /* MNToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MNToolkit.h; path = Core/MNToolkit.h; sourceTree = "<group>"; };
+		31FA6BAE1976385D00294FFD /* MNToolkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MNToolkit.m; path = Core/MNToolkit.m; sourceTree = "<group>"; };
+		31FA6BB119763C2800294FFD /* dog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dog.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,13 +63,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3142682D196D084400973BC4 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		31781703196CFADB001D3F4E = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +84,7 @@
 		3178170E196CFADB001D3F4E /* MNToolkit */ = {
 			isa = PBXGroup;
 			children = (
+				31FA6BA71976270F00294FFD /* Core */,
 				31781713196CFADB001D3F4E /* AppDelegate.h */,
 				31781714196CFADB001D3F4E /* AppDelegate.m */,
 				31781719196CFADB001D3F4E /* Images.xcassets */,
@@ -93,7 +97,7 @@
 		3178170F196CFADB001D3F4E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3142682D196D084400973BC4 /* Resources */,
+				31FA6BB019763C2800294FFD /* Resources */,
 				31781710196CFADB001D3F4E /* Info.plist */,
 				31781711196CFADB001D3F4E /* main.m */,
 			);
@@ -104,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				31781723196CFADC001D3F4E /* Supporting Files */,
+				31FA6BAB197629BE00294FFD /* NSString+MNToolkitTests.m */,
 			);
 			path = MNToolkitTests;
 			sourceTree = "<group>";
@@ -114,6 +119,25 @@
 				31781724196CFADC001D3F4E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		31FA6BA71976270F00294FFD /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				31FA6BAD1976385D00294FFD /* MNToolkit.h */,
+				31FA6BAE1976385D00294FFD /* MNToolkit.m */,
+				31FA6BA81976279100294FFD /* NSString+MNToolkit.h */,
+				31FA6BA91976279100294FFD /* NSString+MNToolkit.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		31FA6BB019763C2800294FFD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				31FA6BB119763C2800294FFD /* dog.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +219,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31FA6BB219763C2800294FFD /* dog.png in Resources */,
 				3178171A196CFADB001D3F4E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,8 +239,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				31781715196CFADB001D3F4E /* AppDelegate.m in Sources */,
+				31FA6BAA1976279100294FFD /* NSString+MNToolkit.m in Sources */,
 				31781712196CFADB001D3F4E /* main.m in Sources */,
 				31781718196CFADB001D3F4E /* MNToolkit.xcdatamodeld in Sources */,
+				31FA6BAF1976385D00294FFD /* MNToolkit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31FA6BAC197629BE00294FFD /* NSString+MNToolkitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
