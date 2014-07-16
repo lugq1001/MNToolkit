@@ -13,8 +13,9 @@
 		3178171A196CFADB001D3F4E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31781719196CFADB001D3F4E /* Images.xcassets */; };
 		31FA6BAA1976279100294FFD /* NSString+MNToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 31FA6BA91976279100294FFD /* NSString+MNToolkit.m */; };
 		31FA6BAC197629BE00294FFD /* NSString+MNToolkitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 31FA6BAB197629BE00294FFD /* NSString+MNToolkitTests.m */; };
-		31FA6BAF1976385D00294FFD /* MNToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 31FA6BAE1976385D00294FFD /* MNToolkit.m */; };
+		31FA6BAF1976385D00294FFD /* MNToolkit+SandboxPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 31FA6BAE1976385D00294FFD /* MNToolkit+SandboxPath.m */; };
 		31FA6BB219763C2800294FFD /* dog.png in Resources */ = {isa = PBXBuildFile; fileRef = 31FA6BB119763C2800294FFD /* dog.png */; };
+		31FA6BB419763EAC00294FFD /* MNToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 31FA6BB319763EAC00294FFD /* MNToolkit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +42,9 @@
 		31FA6BA91976279100294FFD /* NSString+MNToolkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MNToolkit.m"; path = "Core/NSString+MNToolkit.m"; sourceTree = "<group>"; };
 		31FA6BAB197629BE00294FFD /* NSString+MNToolkitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MNToolkitTests.m"; sourceTree = "<group>"; };
 		31FA6BAD1976385D00294FFD /* MNToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MNToolkit.h; path = Core/MNToolkit.h; sourceTree = "<group>"; };
-		31FA6BAE1976385D00294FFD /* MNToolkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MNToolkit.m; path = Core/MNToolkit.m; sourceTree = "<group>"; };
+		31FA6BAE1976385D00294FFD /* MNToolkit+SandboxPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MNToolkit+SandboxPath.m"; path = "Core/MNToolkit+SandboxPath.m"; sourceTree = "<group>"; };
 		31FA6BB119763C2800294FFD /* dog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dog.png; sourceTree = "<group>"; };
+		31FA6BB319763EAC00294FFD /* MNToolkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MNToolkit.m; path = Core/MNToolkit.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				31FA6BAD1976385D00294FFD /* MNToolkit.h */,
-				31FA6BAE1976385D00294FFD /* MNToolkit.m */,
+				31FA6BB319763EAC00294FFD /* MNToolkit.m */,
+				31FA6BAE1976385D00294FFD /* MNToolkit+SandboxPath.m */,
 				31FA6BA81976279100294FFD /* NSString+MNToolkit.h */,
 				31FA6BA91976279100294FFD /* NSString+MNToolkit.m */,
 			);
@@ -241,8 +244,9 @@
 				31781715196CFADB001D3F4E /* AppDelegate.m in Sources */,
 				31FA6BAA1976279100294FFD /* NSString+MNToolkit.m in Sources */,
 				31781712196CFADB001D3F4E /* main.m in Sources */,
+				31FA6BB419763EAC00294FFD /* MNToolkit.m in Sources */,
 				31781718196CFADB001D3F4E /* MNToolkit.xcdatamodeld in Sources */,
-				31FA6BAF1976385D00294FFD /* MNToolkit.m in Sources */,
+				31FA6BAF1976385D00294FFD /* MNToolkit+SandboxPath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,9 @@
  */
 @interface MNToolkit : NSObject
 
+@end
+
+@interface MNToolkit (SandboxPath)
 //sandbox path
 + (NSString *)sandboxPathHome;
 + (NSString *)sandboxPathApp;
