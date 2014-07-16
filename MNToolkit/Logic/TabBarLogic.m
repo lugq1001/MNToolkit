@@ -124,11 +124,11 @@ static NSString * const kTabBarControllerIdentifier = @"TabBarController";
     UIView *containView = [transitionContext containerView];
     [containView addSubview:to.view];
     
-    to.view.transform = CGAffineTransformMakeScale(.0, .0);
+    to.view.transform = CGAffineTransformMakeScale(.0f, .0f);
     [containView insertSubview:to.view aboveSubview:from.view];
     
     [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-        to.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        to.view.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:YES];
     }];
