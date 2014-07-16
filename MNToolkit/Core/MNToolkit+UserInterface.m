@@ -12,7 +12,7 @@
 
 + (UIStoryboard *)getStroyboard:(NSString *)stroyboardName
 {
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:stroyboardName bundle:nil];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:stroyboardName bundle:[NSBundle mainBundle]];
     return sb;
 }
 

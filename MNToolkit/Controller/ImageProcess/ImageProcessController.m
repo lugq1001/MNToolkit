@@ -1,19 +1,18 @@
 //
-//  ViewController.m
+//  ImageProcessController.m
 //  MNToolkit
 //
 //  Created by 陆广庆 on 14/7/16.
 //  Copyright (c) 2014年 陆广庆. All rights reserved.
 //
 
-#import "ViewController.h"
-#import "MNToolkit.h"
+#import "ImageProcessController.h"
 
-@interface ViewController ()
+@interface ImageProcessController ()
 
 @end
 
-@implementation ViewController
+@implementation ImageProcessController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,9 +33,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-- (IBAction)showAlert:(id)sender {
-    [MNToolkit showAlertWithTitle:@"231" message:@"21312"];
 }
 
 /*

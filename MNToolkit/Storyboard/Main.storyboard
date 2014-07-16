@@ -32,13 +32,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rv3-mx-EmR">
-                                <rect key="frame" x="20" y="98" width="280" height="30"/>
-                                <state key="normal" title="show alert">
+                            <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="npa-wa-Cvr">
+                                <rect key="frame" x="20" y="85" width="280" height="30"/>
+                                <state key="normal" title="Custom TabBar Controller">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showAlert:" destination="S1L-lN-8SD" eventType="touchUpInside" id="EFX-rw-k6k"/>
+                                    <action selector="customTabBarController:" destination="S1L-lN-8SD" eventType="touchUpInside" id="PWM-YF-ydb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -48,7 +48,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Peh-dV-9E2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="372" y="239"/>
+            <point key="canvasLocation" x="312" y="231"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="JCS-1n-oUh">
+            <objects>
+                <tabBarController storyboardIdentifier="TabBarController" id="mNN-pv-8ex" customClass="TabBarController" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="V1d-ej-KTD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vuH-Ke-5GB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="781" y="239"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

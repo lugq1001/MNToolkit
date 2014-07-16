@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3116DF8B197666CE0031AB32 /* AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 3116DF8A197666CE0031AB32 /* AppColors.m */; };
+		3116DF8D19767B210031AB32 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3116DF8C19767B210031AB32 /* Camera.storyboard */; };
+		3116DF94197684220031AB32 /* CameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3116DF93197684220031AB32 /* CameraController.m */; };
 		312651011976520300EFA203 /* MNToolkit+UserInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 312651001976520300EFA203 /* MNToolkit+UserInterface.m */; };
-		312651031976543B00EFA203 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 312651021976543B00EFA203 /* Main.storyboard */; };
-		312651061976549700EFA203 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 312651051976549700EFA203 /* ViewController.m */; };
+		3126510D19765F7700EFA203 /* ImageProcess.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3126510C19765F7700EFA203 /* ImageProcess.storyboard */; };
+		3126510F19765FD200EFA203 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3126510E19765FD200EFA203 /* Main.storyboard */; };
+		3126511419765FDC00EFA203 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3126511119765FDC00EFA203 /* ViewController.m */; };
+		3126511519765FDC00EFA203 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3126511219765FDC00EFA203 /* TabBarController.m */; };
+		312651191976613B00EFA203 /* ImageProcessController.m in Sources */ = {isa = PBXBuildFile; fileRef = 312651181976613B00EFA203 /* ImageProcessController.m */; };
 		31781712196CFADB001D3F4E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 31781711196CFADB001D3F4E /* main.m */; };
 		31781715196CFADB001D3F4E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 31781714196CFADB001D3F4E /* AppDelegate.m */; };
 		31781718196CFADB001D3F4E /* MNToolkit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31781716196CFADB001D3F4E /* MNToolkit.xcdatamodeld */; };
@@ -32,10 +38,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3116DF89197666CE0031AB32 /* AppColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppColors.h; path = Helper/AppColors.h; sourceTree = "<group>"; };
+		3116DF8A197666CE0031AB32 /* AppColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppColors.m; path = Helper/AppColors.m; sourceTree = "<group>"; };
+		3116DF8C19767B210031AB32 /* Camera.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
+		3116DF92197684220031AB32 /* CameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CameraController.h; path = Controller/Camera/CameraController.h; sourceTree = "<group>"; };
+		3116DF93197684220031AB32 /* CameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CameraController.m; path = Controller/Camera/CameraController.m; sourceTree = "<group>"; };
 		312651001976520300EFA203 /* MNToolkit+UserInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MNToolkit+UserInterface.m"; path = "Core/MNToolkit+UserInterface.m"; sourceTree = "<group>"; };
-		312651021976543B00EFA203 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		312651041976549700EFA203 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		312651051976549700EFA203 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3126510C19765F7700EFA203 /* ImageProcess.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ImageProcess.storyboard; path = Storyboard/ImageProcess.storyboard; sourceTree = "<group>"; };
+		3126510E19765FD200EFA203 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Storyboard/Main.storyboard; sourceTree = "<group>"; };
+		3126511019765FDC00EFA203 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = Controller/ViewController.h; sourceTree = "<group>"; };
+		3126511119765FDC00EFA203 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = Controller/ViewController.m; sourceTree = "<group>"; };
+		3126511219765FDC00EFA203 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabBarController.m; path = Controller/TabBarController.m; sourceTree = "<group>"; };
+		3126511319765FDC00EFA203 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabBarController.h; path = Controller/TabBarController.h; sourceTree = "<group>"; };
+		312651171976613B00EFA203 /* ImageProcessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageProcessController.h; path = Controller/ImageProcess/ImageProcessController.h; sourceTree = "<group>"; };
+		312651181976613B00EFA203 /* ImageProcessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageProcessController.m; path = Controller/ImageProcess/ImageProcessController.m; sourceTree = "<group>"; };
 		3178170C196CFADB001D3F4E /* MNToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31781710196CFADB001D3F4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31781711196CFADB001D3F4E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -72,6 +88,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3116DF881976669B0031AB32 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				3116DF89197666CE0031AB32 /* AppColors.h */,
+				3116DF8A197666CE0031AB32 /* AppColors.m */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		3116DF8E197683BD0031AB32 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				3116DF92197684220031AB32 /* CameraController.h */,
+				3116DF93197684220031AB32 /* CameraController.m */,
+			);
+			name = Camera;
+			sourceTree = "<group>";
+		};
+		3126510719765A6800EFA203 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3116DF8E197683BD0031AB32 /* Camera */,
+				312651161976610E00EFA203 /* ImageProcess */,
+				3126511019765FDC00EFA203 /* ViewController.h */,
+				3126511119765FDC00EFA203 /* ViewController.m */,
+				3126511219765FDC00EFA203 /* TabBarController.m */,
+				3126511319765FDC00EFA203 /* TabBarController.h */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		3126510B19765E9600EFA203 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				3126510E19765FD200EFA203 /* Main.storyboard */,
+				3126510C19765F7700EFA203 /* ImageProcess.storyboard */,
+				3116DF8C19767B210031AB32 /* Camera.storyboard */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		312651161976610E00EFA203 /* ImageProcess */ = {
+			isa = PBXGroup;
+			children = (
+				312651171976613B00EFA203 /* ImageProcessController.h */,
+				312651181976613B00EFA203 /* ImageProcessController.m */,
+			);
+			name = ImageProcess;
+			sourceTree = "<group>";
+		};
 		31781703196CFADB001D3F4E = {
 			isa = PBXGroup;
 			children = (
@@ -94,11 +160,11 @@
 			isa = PBXGroup;
 			children = (
 				31FA6BA71976270F00294FFD /* Core */,
+				3126510719765A6800EFA203 /* Controller */,
+				3126510B19765E9600EFA203 /* Storyboard */,
+				3116DF881976669B0031AB32 /* Helper */,
 				31781713196CFADB001D3F4E /* AppDelegate.h */,
 				31781714196CFADB001D3F4E /* AppDelegate.m */,
-				312651041976549700EFA203 /* ViewController.h */,
-				312651051976549700EFA203 /* ViewController.m */,
-				312651021976543B00EFA203 /* Main.storyboard */,
 				31781719196CFADB001D3F4E /* Images.xcassets */,
 				31781716196CFADB001D3F4E /* MNToolkit.xcdatamodeld */,
 				3178170F196CFADB001D3F4E /* Supporting Files */,
@@ -233,9 +299,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3126510D19765F7700EFA203 /* ImageProcess.storyboard in Resources */,
 				31FA6BB219763C2800294FFD /* dog.png in Resources */,
 				3178171A196CFADB001D3F4E /* Images.xcassets in Resources */,
-				312651031976543B00EFA203 /* Main.storyboard in Resources */,
+				3126510F19765FD200EFA203 /* Main.storyboard in Resources */,
+				3116DF8D19767B210031AB32 /* Camera.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,12 +322,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				31781715196CFADB001D3F4E /* AppDelegate.m in Sources */,
+				312651191976613B00EFA203 /* ImageProcessController.m in Sources */,
 				31FA6BAA1976279100294FFD /* NSString+MNToolkit.m in Sources */,
-				312651061976549700EFA203 /* ViewController.m in Sources */,
+				3126511419765FDC00EFA203 /* ViewController.m in Sources */,
+				3126511519765FDC00EFA203 /* TabBarController.m in Sources */,
 				312651011976520300EFA203 /* MNToolkit+UserInterface.m in Sources */,
+				3116DF8B197666CE0031AB32 /* AppColors.m in Sources */,
 				31781712196CFADB001D3F4E /* main.m in Sources */,
 				31FA6BB419763EAC00294FFD /* MNToolkit.m in Sources */,
 				31781718196CFADB001D3F4E /* MNToolkit.xcdatamodeld in Sources */,
+				3116DF94197684220031AB32 /* CameraController.m in Sources */,
 				31FA6BAF1976385D00294FFD /* MNToolkit+SandboxPath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
