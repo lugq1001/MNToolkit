@@ -16,6 +16,7 @@ static NSString * const kCameraRootController = @"CameraRootController";
 
 @interface CameraLogic ()
 
+@property (nonatomic, strong) UIViewController *userInterface;
 @property (nonatomic, strong) UINavigationController *rootNav;
 
 @end

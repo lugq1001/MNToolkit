@@ -11,8 +11,6 @@
 
 @interface ImageProcessLogic : NSObject
 
-@property (nonatomic, strong) UIViewController *userInterface;
-
 - (instancetype)init;
 
 @end

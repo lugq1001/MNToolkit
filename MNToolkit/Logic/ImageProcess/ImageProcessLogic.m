@@ -16,6 +16,7 @@ static NSString * const kImageProcessRootController = @"ImageProcessRootControll
 
 @interface ImageProcessLogic ()
 
+@property (nonatomic, strong) UIViewController *userInterface;
 @property (nonatomic, strong) UINavigationController *rootNav;
 
 @end

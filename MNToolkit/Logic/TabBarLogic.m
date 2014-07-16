@@ -16,6 +16,12 @@
 static NSString * const kSBMain = @"Main";
 static NSString * const kTabBarControllerIdentifier = @"TabBarController";
 
+@interface TabBarLogic () <UIViewControllerTransitioningDelegate>
+
+@property (nonatomic, strong) UIViewController *userInterface;
+
+@end
+
 @implementation TabBarLogic
 
 - (instancetype)init
@@ -66,6 +72,16 @@ static NSString * const kTabBarControllerIdentifier = @"TabBarController";
     return tabBarController;
 }
 
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+{
+    return nil;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
+{
+    return [[TabBarPresentationTransition alloc] init];
+}
+
 @end
 
 #pragma mark -Wireframe
@@ -74,6 +90,7 @@ static NSString * const kTabBarControllerIdentifier = @"TabBarController";
 //跳转至TabbarController
 - (void)presentTabBarFromViewController:(UIViewController *)controller
 {
+    [self.userInterface setTransitioningDelegate:self];
     [controller presentViewController:self.userInterface animated:YES completion:nil];
 }
 
@@ -90,3 +107,32 @@ static NSString * const kTabBarControllerIdentifier = @"TabBarController";
 
 
 @end
+
+#pragma mark -Helper
+
+@implementation TabBarPresentationTransition
+
+- (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext
+{
+    return .5f;
+}
+
+- (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext
+{
+    UIViewController *from = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    TabBarController *to = (TabBarController *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    UIView *containView = [transitionContext containerView];
+    [containView addSubview:to.view];
+    
+    to.view.transform = CGAffineTransformMakeScale(.0, .0);
+    [containView insertSubview:to.view aboveSubview:from.view];
+    
+    [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
+        to.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
+    } completion:^(BOOL finished) {
+        [transitionContext completeTransition:YES];
+    }];
+}
+
+@end
+

@@ -11,8 +11,6 @@
 
 @interface CameraLogic : NSObject
 
-@property (nonatomic, strong) UIViewController *userInterface;
-
 - (instancetype)init;
 
 @end

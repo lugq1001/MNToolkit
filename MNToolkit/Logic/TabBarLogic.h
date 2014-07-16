@@ -11,8 +11,6 @@
 
 @interface TabBarLogic : NSObject
 
-@property (nonatomic, strong) UIViewController *userInterface;
-
 - (instancetype)init;
 
 @end
@@ -29,5 +27,9 @@
 @end
 
 @interface TabBarLogic (Interactor)
+
+@end
+
+@interface TabBarPresentationTransition : NSObject <UIViewControllerAnimatedTransitioning>
 
 @end
