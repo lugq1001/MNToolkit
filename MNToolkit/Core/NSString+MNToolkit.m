@@ -25,18 +25,6 @@
     return !self || self == nil || self.length == 0;
 }
 
-- (void)showAlertTitle:(NSString *)message
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:self message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
-}
-
-- (void)showAlertMessage:(NSString *)title
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:self delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
-}
-
 - (NSString*)newDateFrom:(NSString *)from to:(NSString*)format;
 {
     NSString* dateStr = self;

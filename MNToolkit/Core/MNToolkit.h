@@ -7,6 +7,7 @@
 //
 
 @import Foundation;
+@import UIKit;
 
 /**
  *  @brief iOS工具类
@@ -25,5 +26,16 @@
 + (NSString *)sandboxPathTmp;
 + (NSString *)sandboxFilePath:(NSString *)fileName suffix:(NSString *)suffix;
 + (NSString *)sandboxFilePath:(NSString *)fileName suffix:(NSString *)suffix inDirectory:(NSString *)directory;
+
+@end
+
+@interface MNToolkit (UserInterface)
+// 获取栈顶视图
++ (UIViewController *)topViewControllerInWondow:(UIWindow *)window;
+// 获取sb
++ (UIStoryboard *)getStroyboard:(NSString *)stroyboardName;
+// 确认对话框
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message;
+
 
 @end

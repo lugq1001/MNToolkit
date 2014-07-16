@@ -20,10 +20,6 @@
 // 为空
 - (BOOL)isBlankOrNil;
 
-//	alert
-- (void)showAlertTitle:(NSString *)message;
-- (void)showAlertMessage:(NSString *)title;
-
 // 日期转换
 - (NSString*)newDateFrom:(NSString *)from to:(NSString*)format;
 
