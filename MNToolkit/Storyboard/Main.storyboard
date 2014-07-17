@@ -1,54 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="14A283o" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="OQ6-6T-9Yk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="14A283o" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="6xM-fi-fzJ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="ZST-gj-Ism">
-            <objects>
-                <navigationController id="OQ6-6T-9Yk" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="whc-SF-y6f">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="S1L-lN-8SD" kind="relationship" relationship="rootViewController" id="f2d-fG-pcd"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lxt-LK-205" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-82" y="231"/>
-        </scene>
         <!--View Controller-->
-        <scene sceneID="2Uu-5J-xM2">
+        <scene sceneID="3HV-gi-VYh">
             <objects>
-                <viewController id="S1L-lN-8SD" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="6xM-fi-fzJ" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="64X-hU-zao"/>
-                        <viewControllerLayoutGuide type="bottom" id="olw-VN-Gtg"/>
+                        <viewControllerLayoutGuide type="top" id="Z8m-tX-B1L"/>
+                        <viewControllerLayoutGuide type="bottom" id="7C1-ik-esj"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="p8S-7J-0iA">
+                    <view key="view" contentMode="scaleToFill" id="yus-xz-79f">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="npa-wa-Cvr">
-                                <rect key="frame" x="20" y="85" width="280" height="30"/>
-                                <state key="normal" title="Custom TabBar Controller">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="customTabBarController:" destination="S1L-lN-8SD" eventType="touchUpInside" id="PWM-YF-ydb"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="1ps-WQ-Tus"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Peh-dV-9E2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6EC-ar-PeC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="312" y="231"/>
+            <point key="canvasLocation" x="194" y="313"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="JCS-1n-oUh">
