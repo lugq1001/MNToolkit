@@ -48,7 +48,11 @@
 
 @end
 
+
 @interface MNToolkit (Hardware)
+
+#define MNDeviceScreenWidth ([UIScreen mainScreen].bounds.size.width)
+#define MNDeviceScreenHeight ([UIScreen mainScreen].bounds.size.height)
 
 + (BOOL)hardwareCameraAvailable;
 
