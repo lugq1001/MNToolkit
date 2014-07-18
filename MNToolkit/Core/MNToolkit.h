@@ -39,3 +39,24 @@
 
 
 @end
+
+@interface MNToolkit (UserPermission)
+
++ (BOOL)permissionCaptureEnable;
++ (BOOL)permissionAlbumEnable;
++ (BOOL)permissionLocationEnable;
+
+@end
+
+@interface MNToolkit (Hardware)
+
++ (BOOL)hardwareCameraAvailable;
+
+@end
+
+
+
+
+
+
+

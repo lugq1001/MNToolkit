@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		312651011976520300EFA203 /* MNToolkit+UserInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 312651001976520300EFA203 /* MNToolkit+UserInterface.m */; };
 		3126510F19765FD200EFA203 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3126510E19765FD200EFA203 /* Main.storyboard */; };
+		3146C39D19785C4F0005AB13 /* MNToolkit+UserPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 3146C39C19785C4F0005AB13 /* MNToolkit+UserPermission.m */; };
+		3146C3B819790EA10005AB13 /* MNToolkit+Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 3146C3B719790EA10005AB13 /* MNToolkit+Hardware.m */; };
 		31781712196CFADB001D3F4E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 31781711196CFADB001D3F4E /* main.m */; };
 		31781715196CFADB001D3F4E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 31781714196CFADB001D3F4E /* AppDelegate.m */; };
 		3178171A196CFADB001D3F4E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31781719196CFADB001D3F4E /* Images.xcassets */; };
@@ -32,6 +34,8 @@
 /* Begin PBXFileReference section */
 		312651001976520300EFA203 /* MNToolkit+UserInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MNToolkit+UserInterface.m"; path = "Core/MNToolkit+UserInterface.m"; sourceTree = "<group>"; };
 		3126510E19765FD200EFA203 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Storyboard/Main.storyboard; sourceTree = "<group>"; };
+		3146C39C19785C4F0005AB13 /* MNToolkit+UserPermission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MNToolkit+UserPermission.m"; path = "Core/MNToolkit+UserPermission.m"; sourceTree = "<group>"; };
+		3146C3B719790EA10005AB13 /* MNToolkit+Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MNToolkit+Hardware.m"; path = "Core/MNToolkit+Hardware.m"; sourceTree = "<group>"; };
 		3178170C196CFADB001D3F4E /* MNToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31781710196CFADB001D3F4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31781711196CFADB001D3F4E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 				31FA6BB319763EAC00294FFD /* MNToolkit.m */,
 				31FA6BAE1976385D00294FFD /* MNToolkit+SandboxPath.m */,
 				312651001976520300EFA203 /* MNToolkit+UserInterface.m */,
+				3146C39C19785C4F0005AB13 /* MNToolkit+UserPermission.m */,
+				3146C3B719790EA10005AB13 /* MNToolkit+Hardware.m */,
 				31FA6BA81976279100294FFD /* NSString+MNToolkit.h */,
 				31FA6BA91976279100294FFD /* NSString+MNToolkit.m */,
 			);
@@ -246,8 +252,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				31781715196CFADB001D3F4E /* AppDelegate.m in Sources */,
+				3146C3B819790EA10005AB13 /* MNToolkit+Hardware.m in Sources */,
 				31FA6BAA1976279100294FFD /* NSString+MNToolkit.m in Sources */,
 				312651011976520300EFA203 /* MNToolkit+UserInterface.m in Sources */,
+				3146C39D19785C4F0005AB13 /* MNToolkit+UserPermission.m in Sources */,
 				31781712196CFADB001D3F4E /* main.m in Sources */,
 				31FA6BB419763EAC00294FFD /* MNToolkit.m in Sources */,
 				31FA6BAF1976385D00294FFD /* MNToolkit+SandboxPath.m in Sources */,
