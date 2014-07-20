@@ -50,4 +50,10 @@
     return [[NSBundle mainBundle] pathForResource:fileName ofType:suffix inDirectory:directory];
 }
 
++ (NSURL *)sandboxFilePathForCoreDataStore:(NSString *)sqliteFileName
+{
+    NSURL *documentsDirectory = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:NULL];
+    return [documentsDirectory URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.sqlite",sqliteFileName]];
+}
+
 @end

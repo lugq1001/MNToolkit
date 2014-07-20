@@ -26,6 +26,7 @@
 + (NSString *)sandboxPathTmp;
 + (NSString *)sandboxFilePath:(NSString *)fileName suffix:(NSString *)suffix;
 + (NSString *)sandboxFilePath:(NSString *)fileName suffix:(NSString *)suffix inDirectory:(NSString *)directory;
++ (NSURL *)sandboxFilePathForCoreDataStore:(NSString *)sqliteFileName;
 
 @end
 
@@ -36,7 +37,8 @@
 + (UIStoryboard *)getStroyboard:(NSString *)stroyboardName;
 // 确认对话框
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message;
-
+//关闭软键盘
++ (void)hideSoftKeyboard:(UIViewController *)viewController;
 
 @end
 

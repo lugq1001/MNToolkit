@@ -41,4 +41,9 @@
     return [self topViewController:presentedViewController];
 }
 
++ (void)hideSoftKeyboard:(UIViewController *)viewController
+{
+    [viewController.view endEditing:YES];
+}
+
 @end
