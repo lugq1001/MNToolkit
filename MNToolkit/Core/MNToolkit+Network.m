@@ -16,16 +16,21 @@ static NSString * const kMethodGet = @"GET";
 
 + (void)http:(NSString *)method url:(NSString *)url params:(NSDictionary *)params callback:(void(^)(NSData *result, NSError *error))callback
 {
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:kNetworkTimeOut];
+    NSMutableURLRequest *request = [NSMutableURLRequest new];
     
-    [request setHTTPMethod:method];
     if(params != nil) {
         NSMutableString *paramStr = [NSMutableString new];
         for(NSString *key in params) {
             [paramStr appendFormat:@"%@=%@&",key,params[key]];
         }
-        [request setHTTPBody:[paramStr dataUsingEncoding:NSUTF8StringEncoding]];
+        if ([method isEqualToString:kMethodGet]) {
+            url = [url stringByAppendingFormat:@"?%@",paramStr];
+        } else if ([method isEqualToString:kMethodPost])
+            [request setHTTPBody:[paramStr dataUsingEncoding:NSUTF8StringEncoding]];
     }
+    [request setURL:[NSURL URLWithString:url]];
+    [request setCachePolicy:NSURLRequestUseProtocolCachePolicy];
+    [request setHTTPMethod:method];
     
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession * session = [NSURLSession sessionWithConfiguration:sessionConfig];
