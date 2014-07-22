@@ -52,8 +52,9 @@
 
 + (NSURL *)sandboxFilePathForCoreDataStore:(NSString *)sqliteFileName
 {
-    NSURL *documentsDirectory = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:NULL];
-    return [documentsDirectory URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.sqlite",sqliteFileName]];
+    //NSURL *documentsDirectory = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:NULL];
+    NSURL *documentsDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    return [documentsDirectory URLByAppendingPathComponent:[sqliteFileName stringByAppendingString:@".sqlite"]];
 }
 
 @end

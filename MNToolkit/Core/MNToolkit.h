@@ -60,6 +60,20 @@
 
 @end
 
+@interface MNToolkit (Network)
+
+
++ (void)httpPost:(NSString *)url params:(NSDictionary *)params callback:(void(^)(NSData *result, NSError *error))callback;
++ (void)httpGet:(NSString *)url params:(NSDictionary *)params callback:(void(^)(NSData *result, NSError *error))callback;
++ (void)httpUploadFile:(NSString *)url withParams:(NSDictionary *)params andFile:(NSArray *)files callback:(void (^)(NSData *result, NSError *error))callback;
+
++ (NSData *)httpDownloadFilePost:(NSString *)url withParams:(NSDictionary *)params storePath:(NSString *)storePath fileName:(NSString *)fileName callback:(void(^)(NSData *data, NSError *error))callback;
+
++ (NSData *)httpDownloadFileGet:(NSString *)url withParams:(NSDictionary *)params storePath:(NSString *)storePath fileName:(NSString *)fileName callback:(void(^)(NSData *data, NSError *error))callback;
+
+
+@end
+
 
 
 
