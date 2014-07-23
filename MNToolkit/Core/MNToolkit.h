@@ -27,6 +27,7 @@
 + (NSString *)sandboxFilePath:(NSString *)fileName suffix:(NSString *)suffix;
 + (NSString *)sandboxFilePath:(NSString *)fileName suffix:(NSString *)suffix inDirectory:(NSString *)directory;
 + (NSURL *)sandboxFilePathForCoreDataStore:(NSString *)sqliteFileName;
++ (NSString *)sandboxPathImages;
 
 @end
 
@@ -37,7 +38,7 @@
 + (UIStoryboard *)getStroyboard:(NSString *)stroyboardName;
 // 确认对话框
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message;
-//关闭软键盘
+// 关闭软键盘
 + (void)hideSoftKeyboard:(UIViewController *)viewController;
 
 @end
@@ -62,15 +63,26 @@
 
 @interface MNToolkit (Network)
 
++ (void)httpRequest:(NSString *)url
+             params:(NSDictionary *)params
+           callback:(void(^)(NSData *result, NSError *error))callback;
 
-+ (void)httpPost:(NSString *)url params:(NSDictionary *)params callback:(void(^)(NSData *result, NSError *error))callback;
-+ (void)httpGet:(NSString *)url params:(NSDictionary *)params callback:(void(^)(NSData *result, NSError *error))callback;
-+ (void)httpUploadFile:(NSString *)url withParams:(NSDictionary *)params andFile:(NSArray *)files callback:(void (^)(NSData *result, NSError *error))callback;
++ (void)httpRequest:(NSString *)url
+   uploadWithParams:(NSDictionary *)params
+          filePaths:(NSArray *)filePaths
+           callback:(void (^)(NSData *result, NSError *error))callback;
 
-+ (NSData *)httpDownloadFilePost:(NSString *)url withParams:(NSDictionary *)params storePath:(NSString *)storePath fileName:(NSString *)fileName callback:(void(^)(NSData *data, NSError *error))callback;
++ (void)httpRequest:(NSString *)url
+ downloadWithParams:(NSDictionary *)params
+          storePath:(NSString *)storePath
+           fileName:(NSString *)fileName
+           callback:(void(^)(NSString *filePath, NSError *error))callback;
 
-+ (NSData *)httpDownloadFileGet:(NSString *)url withParams:(NSDictionary *)params storePath:(NSString *)storePath fileName:(NSString *)fileName callback:(void(^)(NSData *data, NSError *error))callback;
++ (void)httpRequest:(NSString *)url
+    imageWithParams:(NSDictionary *)params
+           callback:(void(^)(NSString *imagePath, NSError *error))callback;
 
++ (NSString *)makeupUrlForHttpGet:(NSString *)url param:(NSDictionary *)params;
 
 @end
 

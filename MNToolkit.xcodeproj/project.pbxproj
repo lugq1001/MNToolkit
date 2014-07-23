@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3110D2B1197F9BB300AFA860 /* MNCryptor+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 3110D2AA197F9BB300AFA860 /* MNCryptor+AES.m */; };
+		3110D2B2197F9BB300AFA860 /* MNCryptor+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 3110D2AB197F9BB300AFA860 /* MNCryptor+MD5.m */; };
+		3110D2B3197F9BB300AFA860 /* MNCryptor+OTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 3110D2AC197F9BB300AFA860 /* MNCryptor+OTP.m */; };
+		3110D2B4197F9BB300AFA860 /* MNCryptor+RSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 3110D2AD197F9BB300AFA860 /* MNCryptor+RSA.m */; };
+		3110D2B5197F9BB300AFA860 /* MNCryptor+SHA.m in Sources */ = {isa = PBXBuildFile; fileRef = 3110D2AE197F9BB300AFA860 /* MNCryptor+SHA.m */; };
+		3110D2B6197F9BB300AFA860 /* MNCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3110D2B0197F9BB300AFA860 /* MNCryptor.m */; };
 		312651011976520300EFA203 /* MNToolkit+UserInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 312651001976520300EFA203 /* MNToolkit+UserInterface.m */; };
 		3126510F19765FD200EFA203 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3126510E19765FD200EFA203 /* Main.storyboard */; };
 		3146C39D19785C4F0005AB13 /* MNToolkit+UserPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 3146C39C19785C4F0005AB13 /* MNToolkit+UserPermission.m */; };
@@ -33,6 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3110D2AA197F9BB300AFA860 /* MNCryptor+AES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MNCryptor+AES.m"; sourceTree = "<group>"; };
+		3110D2AB197F9BB300AFA860 /* MNCryptor+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MNCryptor+MD5.m"; sourceTree = "<group>"; };
+		3110D2AC197F9BB300AFA860 /* MNCryptor+OTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MNCryptor+OTP.m"; sourceTree = "<group>"; };
+		3110D2AD197F9BB300AFA860 /* MNCryptor+RSA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MNCryptor+RSA.m"; sourceTree = "<group>"; };
+		3110D2AE197F9BB300AFA860 /* MNCryptor+SHA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MNCryptor+SHA.m"; sourceTree = "<group>"; };
+		3110D2AF197F9BB300AFA860 /* MNCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCryptor.h; sourceTree = "<group>"; };
+		3110D2B0197F9BB300AFA860 /* MNCryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCryptor.m; sourceTree = "<group>"; };
 		312651001976520300EFA203 /* MNToolkit+UserInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MNToolkit+UserInterface.m"; path = "Core/MNToolkit+UserInterface.m"; sourceTree = "<group>"; };
 		3126510E19765FD200EFA203 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Storyboard/Main.storyboard; sourceTree = "<group>"; };
 		3146C39C19785C4F0005AB13 /* MNToolkit+UserPermission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MNToolkit+UserPermission.m"; path = "Core/MNToolkit+UserPermission.m"; sourceTree = "<group>"; };
@@ -73,6 +86,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3110D2A8197F9B9300AFA860 /* MNSecurity */ = {
+			isa = PBXGroup;
+			children = (
+				3110D2A9197F9BB300AFA860 /* Core */,
+			);
+			name = MNSecurity;
+			sourceTree = "<group>";
+		};
+		3110D2A9197F9BB300AFA860 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3110D2AA197F9BB300AFA860 /* MNCryptor+AES.m */,
+				3110D2AB197F9BB300AFA860 /* MNCryptor+MD5.m */,
+				3110D2AC197F9BB300AFA860 /* MNCryptor+OTP.m */,
+				3110D2AD197F9BB300AFA860 /* MNCryptor+RSA.m */,
+				3110D2AE197F9BB300AFA860 /* MNCryptor+SHA.m */,
+				3110D2AF197F9BB300AFA860 /* MNCryptor.h */,
+				3110D2B0197F9BB300AFA860 /* MNCryptor.m */,
+			);
+			name = Core;
+			path = ../../MNSecurity/MNSecurity/Core;
+			sourceTree = "<group>";
+		};
 		31781703196CFADB001D3F4E = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +130,7 @@
 		3178170E196CFADB001D3F4E /* MNToolkit */ = {
 			isa = PBXGroup;
 			children = (
+				3110D2A8197F9B9300AFA860 /* MNSecurity */,
 				31FA6BA71976270F00294FFD /* Core */,
 				3126510E19765FD200EFA203 /* Main.storyboard */,
 				31781713196CFADB001D3F4E /* AppDelegate.h */,
@@ -258,11 +295,17 @@
 				3146C3B819790EA10005AB13 /* MNToolkit+Hardware.m in Sources */,
 				31FA6BAA1976279100294FFD /* NSString+MNToolkit.m in Sources */,
 				312651011976520300EFA203 /* MNToolkit+UserInterface.m in Sources */,
+				3110D2B2197F9BB300AFA860 /* MNCryptor+MD5.m in Sources */,
+				3110D2B1197F9BB300AFA860 /* MNCryptor+AES.m in Sources */,
 				3146C39D19785C4F0005AB13 /* MNToolkit+UserPermission.m in Sources */,
+				3110D2B5197F9BB300AFA860 /* MNCryptor+SHA.m in Sources */,
 				31781712196CFADB001D3F4E /* main.m in Sources */,
 				31FA6BB419763EAC00294FFD /* MNToolkit.m in Sources */,
 				31FA6BAF1976385D00294FFD /* MNToolkit+SandboxPath.m in Sources */,
+				3110D2B3197F9BB300AFA860 /* MNCryptor+OTP.m in Sources */,
+				3110D2B6197F9BB300AFA860 /* MNCryptor.m in Sources */,
 				31D2A75C197CFA1200B30365 /* MNToolkit+Network.m in Sources */,
+				3110D2B4197F9BB300AFA860 /* MNCryptor+RSA.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +410,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = MNToolkit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -378,6 +422,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = MNToolkit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

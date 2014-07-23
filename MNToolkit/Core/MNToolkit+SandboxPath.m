@@ -50,6 +50,18 @@
     return [[NSBundle mainBundle] pathForResource:fileName ofType:suffix inDirectory:directory];
 }
 
++ (NSString *)sandboxPathImages
+{
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSString *dir = [[self sandboxPathDocuments] stringByAppendingPathComponent:@"imgs"];
+    BOOL isDir;
+    BOOL exist = [manager fileExistsAtPath:dir isDirectory:&isDir];
+    if (!isDir || !exist) {
+        [manager createDirectoryAtPath:dir withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return dir;
+}
+
 + (NSURL *)sandboxFilePathForCoreDataStore:(NSString *)sqliteFileName
 {
     //NSURL *documentsDirectory = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:NULL];

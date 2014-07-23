@@ -7,6 +7,7 @@
 //
 
 #import "MNToolkit.h"
+#import "MNCryptor.h"
 
 static const NSUInteger kNetworkTimeOut = 30.0f;
 static NSString * const kMethodPost = @"POST";
@@ -14,99 +15,17 @@ static NSString * const kMethodGet = @"GET";
 
 @implementation MNToolkit (Network)
 
-+ (void)http:(NSString *)method url:(NSString *)url params:(NSDictionary *)params callback:(void(^)(NSData *result, NSError *error))callback
++ (void)httpRequest:(NSString *)url
+             params:(NSDictionary *)params
+           callback:(void(^)(NSData *result, NSError *error))callback
 {
-    NSMutableURLRequest *request = [NSMutableURLRequest new];
-    
-    if(params != nil) {
-        NSMutableString *paramStr = [NSMutableString new];
-        for(NSString *key in params) {
-            [paramStr appendFormat:@"%@=%@&",key,params[key]];
-        }
-        if ([method isEqualToString:kMethodGet]) {
-            url = [url stringByAppendingFormat:@"?%@",paramStr];
-        } else if ([method isEqualToString:kMethodPost])
-            [request setHTTPBody:[paramStr dataUsingEncoding:NSUTF8StringEncoding]];
-    }
-    [request setURL:[NSURL URLWithString:url]];
-    [request setCachePolicy:NSURLRequestUseProtocolCachePolicy];
-    [request setHTTPMethod:method];
-    
-    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession * session = [NSURLSession sessionWithConfiguration:sessionConfig];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        //        dispatch_async(dispatch_get_main_queue(), ^{
-        //              回主线程更新UI
-        //        });
-        if ([data length] > 0 && error == nil) {
-            //请求成功
-        } else if([data length] == 0 && error == nil) {
-            //没有数据
-            error = [NSError errorWithDomain:@"MNToolkit" code:-1 userInfo:@{NSLocalizedDescriptionKey : @"数据为空"}];
-        } else if(error != nil) {
-            //超时
-            error = [NSError errorWithDomain:@"MNToolkit" code:-1 userInfo:@{NSLocalizedDescriptionKey : @"请求超时"}];
-        }
-        callback(data, error);
-    }];
-    [task resume];
+    [self request:url params:params callback:callback];
 }
 
-+ (NSData *)httpDownloadFile:(NSString *)method url:(NSString *)url withParams:(NSDictionary *)params storePath:(NSString *)storePath fileName:(NSString *)fileName callback:(void(^)(NSData *data, NSError *error))callback
-{
-    NSString *filePath = [storePath stringByAppendingPathComponent:fileName];
-    if([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-        return [NSData dataWithContentsOfFile:filePath];
-    }
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest new];
-    
-    if(params != nil) {
-        NSMutableString *paramStr = [NSMutableString new];
-        for(NSString *key in params) {
-            [paramStr appendFormat:@"%@=%@&",key,params[key]];
-        }
-        if ([method isEqualToString:kMethodGet]) {
-            url = [url stringByAppendingFormat:@"?%@",paramStr];
-        } else if ([method isEqualToString:kMethodPost])
-            [request setHTTPBody:[paramStr dataUsingEncoding:NSUTF8StringEncoding]];
-    }
-    [request setURL:[NSURL URLWithString:url]];
-    [request setCachePolicy:NSURLRequestUseProtocolCachePolicy];
-    [request setHTTPMethod:method];
-    
-    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession * session = [NSURLSession sessionWithConfiguration:sessionConfig];
-    
-    NSURLSessionTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-        NSData *data = [NSData dataWithContentsOfURL:location];
-        if ([data length] > 0 && error == nil) {
-            //请求成功
-        } else if([data length] == 0 && error == nil) {
-            //没有数据
-            error = [NSError errorWithDomain:@"MNToolkit" code:-1 userInfo:@{NSLocalizedDescriptionKey : @"数据为空"}];
-        } else if(error != nil) {
-            //超时
-            error = [NSError errorWithDomain:@"MNToolkit" code:-1 userInfo:@{NSLocalizedDescriptionKey : @"请求超时"}];
-        }
-        callback(data, error);
-    }];
-
-    [task resume];
-    return nil;
-}
-
-+ (void)httpPost:(NSString *)url params:(NSDictionary *)params callback:(void(^)(NSData *result, NSError *error))callback
-{
-    [self http:kMethodPost url:url params:params callback:callback];
-}
-
-+ (void)httpGet:(NSString *)url params:(NSDictionary *)params callback:(void(^)(NSData *result, NSError *error))callback
-{
-    [self http:kMethodGet url:url params:params callback:callback];
-}
-
-+ (void)httpUploadFile:(NSString *)url withParams:(NSDictionary *)params andFile:(NSArray *)files callback:(void (^)(NSData *result, NSError *error))callback
++ (void)httpRequest:(NSString *)url
+   uploadWithParams:(NSDictionary *)params
+          filePaths:(NSArray *)filePaths
+           callback:(void (^)(NSData *result, NSError *error))callback
 {
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession * session = [NSURLSession sessionWithConfiguration:sessionConfig];
@@ -144,7 +63,7 @@ static NSString * const kMethodGet = @"GET";
     }
     
     int i = 0;
-    for(NSString *path in files) {
+    for(NSString *path in filePaths) {
         NSData *data = [NSData dataWithContentsOfFile:path];
 //        UIImage *image = [UIImage imageWithContentsOfFile:path];
 //        if(UIImagePNGRepresentation(image)) {
@@ -204,17 +123,118 @@ static NSString * const kMethodGet = @"GET";
     [task resume];
 }
 
-+ (NSData *)httpDownloadFilePost:(NSString *)url withParams:(NSDictionary *)params storePath:(NSString *)storePath fileName:(NSString *)fileName callback:(void(^)(NSData *data, NSError *error))callback
+
++ (void)httpRequest:(NSString *)url
+ downloadWithParams:(NSDictionary *)params
+          storePath:(NSString *)storePath
+           fileName:(NSString *)fileName
+           callback:(void(^)(NSString *filePath, NSError *error))callback
 {
-    return [self httpDownloadFile:kMethodPost url:url withParams:params storePath:storePath fileName:fileName callback:callback];
+    NSString *filePath = [storePath stringByAppendingPathComponent:fileName];
+    NSFileManager *manager = [NSFileManager defaultManager];
+    if([manager fileExistsAtPath:filePath]) {
+        [manager removeItemAtPath:filePath error:nil];
+    }
+    
+    NSMutableURLRequest *request = [self mutableURLRequest:url params:params];
+
+    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession * session = [NSURLSession sessionWithConfiguration:sessionConfig];
+    
+    NSURLSessionTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+        if (error != nil) {
+            callback(nil, error);
+            return;
+        }
+        NSData *data = [NSData dataWithContentsOfURL:location];
+        NSFileHandle *handle = [NSFileHandle fileHandleForWritingAtPath:filePath];
+        [handle writeData:data];
+        callback(filePath, nil);
+    }];
+    [task resume];
 }
 
-+ (NSData *)httpDownloadFileGet:(NSString *)url withParams:(NSDictionary *)params storePath:(NSString *)storePath fileName:(NSString *)fileName callback:(void(^)(NSData *data, NSError *error))callback
++ (void)httpRequest:(NSString *)url
+    imageWithParams:(NSDictionary *)params
+           callback:(void(^)(NSString *imagePath, NSError *error))callback
 {
-    return [self httpDownloadFile:kMethodGet url:url withParams:params storePath:storePath fileName:fileName callback:callback];
+    NSString *filePath = [[MNToolkit sandboxPathImages] stringByAppendingPathComponent:[MNCryptor md5:url]];
+    NSFileManager *manager = [NSFileManager defaultManager];
+    if([manager fileExistsAtPath:filePath]) {
+        callback(filePath, nil);
+        return;
+    }
+    
+    NSMutableURLRequest *request = [self mutableURLRequest:url params:params];
+    
+    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession * session = [NSURLSession sessionWithConfiguration:sessionConfig];
+    
+    NSURLSessionTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+        if (error != nil) {
+            callback(nil, error);
+            return;
+        }
+        NSData *data = [NSData dataWithContentsOfURL:location];
+        UIImage *image = [UIImage imageWithData:data];
+        if([[url pathExtension] isEqualToString:@"png"]) {
+            [UIImagePNGRepresentation(image) writeToFile:filePath atomically:YES];
+        } else {
+            [UIImageJPEGRepresentation(image, 1.0) writeToFile:filePath atomically:YES];
+        }
+        callback(filePath, nil);
+    }];
+    [task resume];
 }
 
++ (void)request:(NSString *)url params:(NSDictionary *)params callback:(void(^)(NSData *result, NSError *error))callback
+{
+    NSMutableURLRequest *request = [self mutableURLRequest:url params:params];
+    
+    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession * session = [NSURLSession sessionWithConfiguration:sessionConfig];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        //        dispatch_async(dispatch_get_main_queue(), ^{
+        //              回主线程更新UI
+        //        });
+//        if ([data length] > 0 && error == nil) {
+//            //请求成功
+//        } else if([data length] == 0 && error == nil) {
+//            //没有数据
+//            error = [NSError errorWithDomain:@"MNToolkit" code:-1 userInfo:@{NSLocalizedDescriptionKey : @"数据为空"}];
+//        } else if(error != nil) {
+//            //超时
+//            error = [NSError errorWithDomain:@"MNToolkit" code:-1 userInfo:@{NSLocalizedDescriptionKey : @"请求超时"}];
+//        }
+        callback(data, error);
+    }];
+    [task resume];
+}
 
++ (NSString *)makeupUrlForHttpGet:(NSString *)url param:(NSDictionary *)params
+{
+    NSMutableString *paramStr = [NSMutableString new];
+    for(NSString *key in params) {
+        [paramStr appendFormat:@"%@=%@&",key,params[key]];
+    }
+    return [url stringByAppendingFormat:@"?%@",paramStr];
+}
+
++ (NSMutableURLRequest *)mutableURLRequest:(NSString *)url params:(NSDictionary *)params
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:kNetworkTimeOut];
+    if(params != nil) {//post
+        NSMutableString *paramStr = [NSMutableString new];
+        for(NSString *key in params) {
+            [paramStr appendFormat:@"%@=%@&",key,params[key]];
+        }
+        [request setHTTPBody:[paramStr dataUsingEncoding:NSUTF8StringEncoding]];
+        [request setHTTPMethod:kMethodPost];
+    } else {//get
+        [request setHTTPMethod:kMethodGet];
+    }
+    return request;
+}
 
 
 @end
