@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3106DE6A1981FDEB00DF1697 /* MNToolkit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3106DE691981FDEB00DF1697 /* MNToolkit.swift */; };
+		3106DE6C1982009B00DF1697 /* MNToolkitImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3106DE6B1982009B00DF1697 /* MNToolkitImpl.swift */; };
 		3110D2B1197F9BB300AFA860 /* MNCryptor+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 3110D2AA197F9BB300AFA860 /* MNCryptor+AES.m */; };
 		3110D2B2197F9BB300AFA860 /* MNCryptor+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 3110D2AB197F9BB300AFA860 /* MNCryptor+MD5.m */; };
 		3110D2B3197F9BB300AFA860 /* MNCryptor+OTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 3110D2AC197F9BB300AFA860 /* MNCryptor+OTP.m */; };
@@ -39,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3106DE691981FDEB00DF1697 /* MNToolkit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MNToolkit.swift; path = Core/Swift/MNToolkit.swift; sourceTree = "<group>"; };
+		3106DE6B1982009B00DF1697 /* MNToolkitImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MNToolkitImpl.swift; path = Core/Swift/MNToolkitImpl.swift; sourceTree = "<group>"; };
+		3106DE6D1982028B00DF1697 /* MNToolkit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MNToolkit-Bridging-Header.h"; sourceTree = "<group>"; };
 		3110D2AA197F9BB300AFA860 /* MNCryptor+AES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MNCryptor+AES.m"; sourceTree = "<group>"; };
 		3110D2AB197F9BB300AFA860 /* MNCryptor+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MNCryptor+MD5.m"; sourceTree = "<group>"; };
 		3110D2AC197F9BB300AFA860 /* MNCryptor+OTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MNCryptor+OTP.m"; sourceTree = "<group>"; };
@@ -86,6 +91,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3106DE671981FD8800DF1697 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				3106DE6D1982028B00DF1697 /* MNToolkit-Bridging-Header.h */,
+				3106DE691981FDEB00DF1697 /* MNToolkit.swift */,
+				3106DE6B1982009B00DF1697 /* MNToolkitImpl.swift */,
+			);
+			name = Swift;
+			sourceTree = "<group>";
+		};
 		3110D2A8197F9B9300AFA860 /* MNSecurity */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +186,7 @@
 		31FA6BA71976270F00294FFD /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				3106DE671981FD8800DF1697 /* Swift */,
 				31FA6BAD1976385D00294FFD /* MNToolkit.h */,
 				31FA6BB319763EAC00294FFD /* MNToolkit.m */,
 				31FA6BAE1976385D00294FFD /* MNToolkit+SandboxPath.m */,
@@ -302,8 +318,10 @@
 				31781712196CFADB001D3F4E /* main.m in Sources */,
 				31FA6BB419763EAC00294FFD /* MNToolkit.m in Sources */,
 				31FA6BAF1976385D00294FFD /* MNToolkit+SandboxPath.m in Sources */,
+				3106DE6A1981FDEB00DF1697 /* MNToolkit.swift in Sources */,
 				3110D2B3197F9BB300AFA860 /* MNCryptor+OTP.m in Sources */,
 				3110D2B6197F9BB300AFA860 /* MNCryptor.m in Sources */,
+				3106DE6C1982009B00DF1697 /* MNToolkitImpl.swift in Sources */,
 				31D2A75C197CFA1200B30365 /* MNToolkit+Network.m in Sources */,
 				3110D2B4197F9BB300AFA860 /* MNCryptor+RSA.m in Sources */,
 			);
@@ -409,10 +427,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MNToolkit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MNToolkit/MNToolkit-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -421,10 +442,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MNToolkit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MNToolkit/MNToolkit-Bridging-Header.h";
 			};
 			name = Release;
 		};
